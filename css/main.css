@@ -375,6 +375,9 @@ img {
   
   .nav__toggle {
     display: block;
+    /* Ensure 44px tap target */
+    min-width: 44px;
+    min-height: 44px;
   }
   
   .nav__menu {
@@ -409,10 +412,18 @@ img {
   
   .nav__link {
     width: 100%;
-    padding: var(--space-20) 0;
+    /* Ensure 44px tap target */
+    padding: var(--space-24) 0;
+    min-height: 44px;
     text-align: center;
     font-size: var(--font-size-xl);
     border-bottom: 1px solid var(--color-border);
+    /* Add touch feedback */
+    -webkit-tap-highlight-color: rgba(0, 113, 227, 0.1);
+  }
+  
+  .nav__link:active {
+    background-color: rgba(0, 113, 227, 0.05);
   }
   
   .nav__link:hover {
@@ -425,6 +436,9 @@ img {
   
   .theme-toggle {
     margin-top: var(--space-32);
+    /* Ensure 44px tap target */
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 
@@ -490,6 +504,60 @@ img {
   border: 0;
 }
 
+/* ============================================
+   SKIP TO CONTENT LINK (Accessibility)
+   ============================================ */
+
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: var(--space-16);
+  z-index: 9999;
+  background-color: var(--color-primary);
+  color: white;
+  padding: var(--space-12) var(--space-24);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-to-content:focus {
+  top: var(--space-16);
+}
+
+/* ============================================
+   KEYBOARD FOCUS STATES
+   ============================================ */
+
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Better focus for buttons */
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Better focus for links */
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 /* Scroll Animations - Apple Style */
 .fade-in {
   opacity: 0;
@@ -508,6 +576,85 @@ img {
 .fade-in:nth-child(3) { transition-delay: 0.15s; }
 .fade-in:nth-child(4) { transition-delay: 0.2s; }
 .fade-in:nth-child(5) { transition-delay: 0.25s; }
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-48);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  color: var(--color-text-secondary);
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-out) 1s forwards;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.scroll-indicator:hover {
+  opacity: 0.7;
+}
+
+.scroll-indicator__text {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: var(--font-weight-medium);
+}
+
+.scroll-indicator__icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Hide scroll indicator when user scrolls */
+.scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   PAGE LOAD ANIMATION
+   ============================================ */
+
+body {
+  opacity: 0;
+  animation: pageLoad 0.4s var(--ease-out) forwards;
+}
+
+@keyframes pageLoad {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Prevent animation on subsequent navigations */
+body.loaded {
+  animation: none;
+  opacity: 1;
+}
 
 /* ============================================
    RESPONSIVE TYPOGRAPHY

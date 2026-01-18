@@ -21,6 +21,10 @@
   
   <title>Pruthvi - Senior Pega System Architect</title>
   
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
   
@@ -30,6 +34,9 @@
   <link rel="stylesheet" href="css/pages.css">
 </head>
 <body>
+  <!-- Skip to main content (Accessibility) -->
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
+  
   <!-- Header / Navigation -->
   <header class="header">
     <nav class="nav">
@@ -52,7 +59,7 @@
   </header>
 
   <!-- Main Content -->
-  <main>
+  <main id="main-content">
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero__content">
@@ -65,6 +72,12 @@
           <a href="resume.html" class="btn btn-primary btn-lg">View Resume</a>
           <a href="projects.html" class="btn btn-secondary btn-lg">See Projects</a>
         </div>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <span class="scroll-indicator__text">Scroll to explore</span>
+        <div class="scroll-indicator__icon">↓</div>
       </div>
     </section>
   </main>

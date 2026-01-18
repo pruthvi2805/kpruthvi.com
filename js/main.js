@@ -22,9 +22,18 @@ class ThemeManager {
 
   setTheme(theme) {
     this.theme = theme;
+    
+    // Add smooth transition class
+    document.documentElement.classList.add('theme-transitioning');
+    
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     this.updateThemeIcon();
+    
+    // Remove transition class after animation
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transitioning');
+    }, 500);
   }
 
   toggleTheme() {
@@ -333,6 +342,57 @@ class ReducedMotion {
 }
 
 // ============================================
+// SCROLL INDICATOR
+// Shows users there's more content below
+// ============================================
+
+class ScrollIndicator {
+  constructor() {
+    this.indicators = document.querySelectorAll('.scroll-indicator');
+    this.init();
+  }
+
+  init() {
+    if (this.indicators.length === 0) return;
+
+    // Hide on scroll
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      
+      if (window.scrollY > 100) {
+        this.indicators.forEach(indicator => {
+          indicator.classList.add('hidden');
+        });
+      }
+      
+      // Show again if scrolled back to top
+      if (window.scrollY < 50) {
+        this.indicators.forEach(indicator => {
+          indicator.classList.remove('hidden');
+        });
+      }
+    });
+
+    // Smooth scroll on click
+    this.indicators.forEach(indicator => {
+      indicator.addEventListener('click', () => {
+        const targetSelector = indicator.getAttribute('data-scroll-to');
+        if (targetSelector) {
+          const target = document.querySelector(targetSelector);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else {
+          // Default: scroll one viewport down
+          window.scrollBy({ top: window.innerHeight - 80, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+}
+
+// ============================================
 // INITIALIZE ALL MODULES
 // ============================================
 
@@ -344,6 +404,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new ScrollAnimations();
   new SmoothScroll();
   new HeaderScroll();
+  new ScrollIndicator();
   
   // Enhanced interactions
   new ButtonEnhancements();
@@ -351,6 +412,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Accessibility
   new ReducedMotion();
+
+  // Mark body as loaded to prevent animation on navigation
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 500);
 
   // Hide loading animation if present
   const loader = document.querySelector('.loader');

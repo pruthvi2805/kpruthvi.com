@@ -13,6 +13,8 @@
   justify-content: center;
   gap: var(--space-8);
   padding: var(--space-12) var(--space-24);
+  /* Ensure minimum tap target on mobile */
+  min-height: 44px;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   font-family: var(--font-sans);
@@ -24,6 +26,8 @@
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  /* Better touch feedback */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -94,12 +98,22 @@
   padding: var(--space-48);
   transition: all var(--transition-slow);
   position: relative;
+  /* Better touch feedback */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: var(--color-border-hover);
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s var(--ease-out);
+  }
 }
 
 .card__title {

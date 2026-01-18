@@ -393,12 +393,22 @@
   transition: all var(--transition-slow);
   display: flex;
   flex-direction: column;
+  /* Better touch feedback */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .project-card:hover {
   box-shadow: var(--shadow-xl);
   transform: translateY(-6px);
   border-color: var(--color-primary);
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .project-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s var(--ease-out);
+  }
 }
 
 .project-card__image {
@@ -508,17 +518,29 @@
   align-items: center;
   gap: var(--space-24);
   padding: var(--space-32);
+  /* Ensure minimum tap target */
+  min-height: 80px;
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   transition: all var(--transition-base);
   text-decoration: none;
+  /* Better touch feedback */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .contact-method:hover {
   box-shadow: var(--shadow-md);
   transform: translateX(4px);
   border-color: var(--color-primary);
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .contact-method:active {
+    transform: scale(0.98);
+    transition: transform 0.1s var(--ease-out);
+  }
 }
 
 .contact-method__icon {
