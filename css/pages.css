@@ -81,7 +81,6 @@
   flex-wrap: wrap;
   opacity: 0;
   animation: fadeInUp 0.8s var(--ease-out) 0.7s forwards;
-  margin-bottom: var(--space-80);
 }
 
 @keyframes fadeInUp {
