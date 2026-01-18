@@ -348,24 +348,67 @@ class ReducedMotion {
 class ScrollMoreIndicator {
   constructor() {
     this.indicator = document.querySelector('.scroll-more-indicator');
+    this.hasScrolled = false;
     this.init();
   }
 
   init() {
     if (!this.indicator) return;
 
-    // Show/hide based on scroll position
-    window.addEventListener('scroll', () => {
+    // Show indicator immediately on page load
+    setTimeout(() => {
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-
-      // Show indicator when there's more content below
-      if (scrollPercentage < 90 && scrollTop > 100) {
+      
+      // Only show if page has scrollable content
+      if (scrollHeight > clientHeight + 100) {
         this.indicator.classList.add('visible');
-      } else {
+      }
+    }, 800);
+
+    // Hide on first scroll
+    window.addEventListener('scroll', () => {
+      if (!this.hasScrolled && window.pageYOffset > 50) {
+        this.hasScrolled = true;
         this.indicator.classList.remove('visible');
+      }
+    }, { once: false });
+  }
+}
+
+// ============================================
+// RESUME SECTION NAVIGATION
+// ============================================
+
+class ResumeSectionNav {
+  constructor() {
+    this.nav = document.querySelector('.resume-section-nav');
+    this.sections = document.querySelectorAll('.resume-section');
+    this.init();
+  }
+
+  init() {
+    if (!this.nav || this.sections.length === 0) return;
+
+    // Highlight active section on scroll
+    window.addEventListener('scroll', () => this.updateActiveSection());
+    
+    // Initial check
+    this.updateActiveSection();
+  }
+
+  updateActiveSection() {
+    const scrollPos = window.pageYOffset + 150;
+
+    this.sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop;
+      const sectionBottom = sectionTop + section.offsetHeight;
+      const navLink = this.nav.querySelectorAll('.resume-section-nav__link')[index];
+
+      if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+        navLink?.classList.add('active');
+      } else {
+        navLink?.classList.remove('active');
       }
     });
   }
@@ -384,6 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new SmoothScroll();
   new HeaderScroll();
   new ScrollMoreIndicator();
+  new ResumeSectionNav();
   
   // Enhanced interactions
   new ButtonEnhancements();
