@@ -485,11 +485,11 @@ img {
 }
 
 .section {
-  padding: var(--space-64) 0;
+  padding: var(--space-48) 0 var(--space-64) 0;
 }
 
 .section-sm {
-  padding: var(--space-48) 0;
+  padding: var(--space-32) 0 var(--space-48) 0;
 }
 
 .visually-hidden {

@@ -125,9 +125,11 @@
    ============================================ */
 
 .resume-header {
-  background: var(--color-bg);
-  padding: var(--space-64) var(--space-24) var(--space-48) var(--space-24);
+  background: var(--color-bg-secondary);
+  padding: var(--space-40) var(--space-24) var(--space-32) var(--space-24);
   text-align: center;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-48);
 }
 
 [data-theme="dark"] .resume-header {
@@ -141,27 +143,27 @@
 }
 
 .resume-header__name {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-8);
   letter-spacing: -0.02em;
 }
 
 .resume-header__title {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-regular);
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-16);
 }
 
 .resume-header__contact {
   display: flex;
-  gap: var(--space-24);
+  gap: var(--space-20);
   justify-content: center;
   flex-wrap: wrap;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-20);
 }
 
 .resume-header__contact a {
@@ -181,27 +183,28 @@
   gap: var(--space-12);
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: var(--space-4);
 }
 
 .resume-section {
-  margin-bottom: var(--space-64);
+  margin-bottom: var(--space-48);
 }
 
 .resume-section__title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
   color: var(--color-text);
-  margin-bottom: var(--space-32);
-  padding-bottom: var(--space-16);
-  border-bottom: 1px solid var(--color-border);
-  letter-spacing: -0.02em;
+  margin-bottom: var(--space-24);
+  padding-bottom: var(--space-12);
+  border-bottom: 2px solid var(--color-primary);
+  letter-spacing: -0.015em;
 }
 
 /* Timeline - Clean, Minimal Approach */
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: var(--space-48);
+  gap: var(--space-40);
 }
 
 .timeline-item {
@@ -341,20 +344,22 @@
 
 @media (max-width: 768px) {
   .resume-header {
-    padding: var(--space-48) var(--space-16) var(--space-32) var(--space-16);
+    padding: var(--space-32) var(--space-16) var(--space-24) var(--space-16);
+    margin-bottom: var(--space-32);
   }
   
   .resume-header__name {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-2xl);
   }
   
   .resume-header__title {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
   }
   
   .resume-header__contact {
     flex-direction: column;
-    gap: var(--space-8);
+    gap: var(--space-6);
+    font-size: var(--font-size-xs);
   }
   
   .timeline-item {
