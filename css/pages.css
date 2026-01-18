@@ -219,7 +219,7 @@
 
 /* Resume content spacing adjustment */
 .resume-content {
-  padding-top: var(--space-64);
+  padding-top: var(--space-32);
 }
 
 /* Resume Section Navigation - Horizontal Sticky Bar */
@@ -297,7 +297,7 @@
 }
 
 .resume-section {
-  margin-bottom: var(--space-40);
+  margin-bottom: var(--space-32);
   background-color: var(--color-bg);
   border-radius: var(--radius-2xl);
   padding: var(--space-32);

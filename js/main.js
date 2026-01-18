@@ -422,8 +422,16 @@ class ResumeSectionNav {
       this.updateActiveSection();
     });
     
-    // Initial check
-    this.updateActiveSection();
+    // Initial check - highlight first section on page load
+    setTimeout(() => {
+      this.updateActiveSection();
+      // If no section is active (page top), activate first one
+      const hasActive = this.nav.querySelector('.resume-section-nav__link.active');
+      if (!hasActive) {
+        const firstLink = this.nav.querySelector('.resume-section-nav__link');
+        if (firstLink) firstLink.classList.add('active');
+      }
+    }, 100);
   }
 
   updateActiveSection() {
