@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
+  
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
   <!-- Skip to main content (Accessibility) -->
@@ -83,7 +86,7 @@
 
           <!-- Right Side - Contact Form -->
           <div class="contact-form-wrapper">
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contact-form">
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName">First Name</label>
@@ -105,9 +108,12 @@
                 <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
               </div>
 
+              <!-- Turnstile CAPTCHA -->
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACNQMxBxxzSL2_0t" data-theme="auto"></div>
+
               <button type="submit" class="btn btn-primary btn-lg contact-submit">Send Message</button>
               
-              <p class="form-note">Form will be functional after Cloudflare migration</p>
+              <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
             </form>
           </div>
 

@@ -886,3 +886,65 @@
     padding: var(--space-32) 0;
   }
 }
+
+/* ============================================
+   CONTACT FORM - STATUS & TURNSTILE
+   ============================================ */
+
+/* Form Status Messages */
+.form-status {
+  display: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  margin-top: 16px;
+  animation: slideIn 0.3s ease;
+  text-align: center;
+}
+
+.form-status-success {
+  background: rgba(52, 199, 89, 0.12);
+  color: #34c759;
+  border: 1.5px solid rgba(52, 199, 89, 0.3);
+}
+
+.form-status-error {
+  background: rgba(255, 59, 48, 0.12);
+  color: #ff3b30;
+  border: 1.5px solid rgba(255, 59, 48, 0.3);
+}
+
+[data-theme='dark'] .form-status-success {
+  background: rgba(52, 199, 89, 0.15);
+  color: #32d74b;
+}
+
+[data-theme='dark'] .form-status-error {
+  background: rgba(255, 69, 58, 0.15);
+  color: #ff453a;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Turnstile Widget */
+.cf-turnstile {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  min-height: 65px;
+}
+
+/* Adjust form spacing for Turnstile */
+.contact-form .cf-turnstile + button {
+  margin-top: 8px;
+}

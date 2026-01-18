@@ -479,6 +479,95 @@ class ResumeSectionNav {
 }
 
 // ============================================
+// CONTACT FORM HANDLER
+// ============================================
+
+class ContactFormHandler {
+  constructor() {
+    this.form = document.getElementById('contact-form');
+    this.statusDiv = document.getElementById('form-status');
+    this.init();
+  }
+
+  init() {
+    if (!this.form) return;
+
+    this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+
+    const submitBtn = this.form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    // Get form data
+    const formData = new FormData(this.form);
+    const firstName = formData.get('firstName');
+    const lastName = formData.get('lastName');
+    const name = `${firstName} ${lastName}`;
+    
+    // Get Turnstile token
+    const turnstileResponse = turnstile.getResponse();
+
+    if (!turnstileResponse) {
+      this.showStatus('Please complete the security check.', 'error');
+      return;
+    }
+
+    // Disable button and show loading
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    this.clearStatus();
+
+    try {
+      const response = await fetch('https://contact-worker.kpruthvi.workers.dev', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: name,
+          email: formData.get('email'),
+          message: formData.get('message'),
+          'cf-turnstile-response': turnstileResponse,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        this.showStatus('Message sent! I\'ll get back to you soon.', 'success');
+        this.form.reset();
+        turnstile.reset();
+      } else {
+        this.showStatus(data.error || 'Failed to send message. Please try again.', 'error');
+        turnstile.reset();
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      this.showStatus('Network error. Please check your connection and try again.', 'error');
+      turnstile.reset();
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  }
+
+  showStatus(message, type) {
+    this.statusDiv.textContent = message;
+    this.statusDiv.className = `form-status form-status-${type}`;
+    this.statusDiv.style.display = 'block';
+  }
+
+  clearStatus() {
+    this.statusDiv.style.display = 'none';
+    this.statusDiv.textContent = '';
+    this.statusDiv.className = 'form-status';
+  }
+}
+
+// ============================================
 // INITIALIZE ALL MODULES
 // ============================================
 
@@ -492,6 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new HeaderScroll();
   new ScrollMoreIndicator();
   new ResumeSectionNav();
+  new ContactFormHandler();
   
   // Enhanced interactions
   new ButtonEnhancements();
