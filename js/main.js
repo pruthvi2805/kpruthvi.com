@@ -521,7 +521,7 @@ class ContactFormHandler {
     this.clearStatus();
 
     try {
-      const response = await fetch('https://contact-worker.kpruthvi.workers.dev', {
+      const response = await fetch('https://contact-worker.kautikwarpruthvi.workers.dev', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
