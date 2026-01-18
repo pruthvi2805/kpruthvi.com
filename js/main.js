@@ -145,6 +145,16 @@ class ScrollAnimations {
   init() {
     if (this.elements.length === 0) return;
 
+    // On resume page, make first two sections visible immediately
+    if (document.querySelector('.resume-section-nav')) {
+      const resumeSections = document.querySelectorAll('.resume-section.fade-in');
+      if (resumeSections.length >= 2) {
+        // Show Summary and Experience immediately
+        resumeSections[0].classList.add('visible');
+        resumeSections[1].classList.add('visible');
+      }
+    }
+
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -80px 0px'
