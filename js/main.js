@@ -355,6 +355,11 @@ class ScrollMoreIndicator {
   init() {
     if (!this.indicator) return;
 
+    // Don't show on resume page (has section nav instead)
+    if (document.querySelector('.resume-section-nav')) {
+      return;
+    }
+
     // Show indicator immediately on page load
     setTimeout(() => {
       const scrollHeight = document.documentElement.scrollHeight;
