@@ -499,7 +499,7 @@ class ContactFormHandler {
     e.preventDefault();
 
     const submitBtn = this.form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
+    const originalText = submitBtn.innerHTML;
 
     // Get form data
     const formData = new FormData(this.form);
@@ -522,9 +522,10 @@ class ContactFormHandler {
       return;
     }
 
-    // Disable button and show loading
+    // Disable button and show loading spinner
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    submitBtn.classList.add('loading');
+    submitBtn.innerHTML = 'Sending...<span class="btn-spinner"></span>';
     this.clearStatus();
 
     try {
@@ -557,7 +558,8 @@ class ContactFormHandler {
       turnstile.reset();
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
+      submitBtn.classList.remove('loading');
+      submitBtn.innerHTML = originalText;
     }
   }
 
