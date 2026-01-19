@@ -726,6 +726,11 @@
   box-shadow: var(--shadow-md);
 }
 
+/* Hide text labels on desktop - icons only */
+.social-link-text {
+  display: none;
+}
+
 /* Right Side - Contact Form */
 .contact-form-wrapper {
   background-color: var(--color-bg);
@@ -879,6 +884,20 @@
   .contact-detail-icon,
   .social-icon-emoji {
     display: none;
+  }
+  
+  /* Show text labels for social links on mobile */
+  .social-link-text {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+  }
+  
+  /* Adjust social links for text content */
+  .contact-social-icon {
+    width: auto;
+    padding: var(--space-12) var(--space-20);
   }
   
   /* Adjust spacing without icons */
