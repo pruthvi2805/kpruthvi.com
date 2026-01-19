@@ -647,38 +647,41 @@
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 .contact-description {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-text-secondary);
   line-height: 1.6;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+  font-weight: 400;
 }
 
 .contact-meta {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  font-size: 14px;
+  gap: 6px;
+  font-size: 15px;
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.contact-meta p {
+  margin: 0;
 }
 
 .contact-link {
-  color: var(--color-text);
-  text-decoration: underline;
-  text-decoration-color: rgba(37, 99, 235, 0.3);
-  text-underline-offset: 2px;
-  transition: all 0.2s ease;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
 }
 
 .contact-link:hover {
-  color: var(--color-primary);
-  text-decoration-color: var(--color-primary);
+  opacity: 0.8;
 }
 
 /* Right Side - Form Card */
@@ -766,9 +769,12 @@
   border-radius: 5px;
 }
 
-/* Turnstile */
+/* Turnstile - less prominent */
 .contact-form .cf-turnstile {
   margin: 16px 0 12px 0;
+  opacity: 0.85;
+  transform: scale(0.95);
+  transform-origin: left center;
 }
 
 @media (max-width: 1024px) {
