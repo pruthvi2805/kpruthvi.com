@@ -32,9 +32,7 @@ Built with vanilla HTML, CSS, and JavaScript to keep the stack simple, transpare
 ├── index.html              # landing page
 ├── resume.html             # web resume with section navigation
 ├── resume-print.html       # print-friendly resume
-├── projects.html           # professional impact highlights
 ├── contact.html            # contact form
-├── colophon.html           # how this site was built
 ├── worker.js               # Cloudflare Worker (Turnstile + Resend)
 ├── sitemap.xml
 ├── robots.txt
@@ -87,9 +85,10 @@ Theme variables are defined in `css/main.css`:
 
 ```css
 :root {
-  --color-primary: #2563eb;
-  --color-bg: #ffffff;
-  --color-text: #0f172a;
+  /* Warm Terracotta Color Palette */
+  --color-primary: #C17B5F;
+  --color-bg: #FAFAF8;
+  --color-text: #1A1A1A;
 }
 ```
 
