@@ -402,9 +402,14 @@ img {
   }
 }
 
-/* Bottom Tab Bar Navigation */
+/* Bottom Tab Bar Navigation - Mobile Only */
+.mobile-bottom-nav {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .mobile-bottom-nav {
+    display: flex;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -412,7 +417,6 @@ img {
     height: 64px;
     background-color: #ffffff;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0 var(--space-8);
