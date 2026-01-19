@@ -634,10 +634,10 @@
 
 .contact-split-layout {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: var(--space-48);
-  align-items: center;
-  max-width: 1400px;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-64);
+  align-items: start;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -781,12 +781,12 @@
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-12);
-  margin-bottom: var(--space-16);
+  gap: var(--space-16);
+  margin-bottom: var(--space-20);
 }
 
 .form-group {
-  margin-bottom: var(--space-20);
+  margin-bottom: var(--space-24);
 }
 
 .form-group label {
@@ -843,11 +843,11 @@
 
 .contact-submit {
   width: 100%;
-  margin-top: var(--space-16);
+  margin-top: var(--space-20);
   font-size: var(--font-size-sm);
-  padding: var(--space-12) var(--space-20);
-  min-height: 44px;
-  font-weight: var(--font-weight-medium);
+  padding: var(--space-14);
+  min-height: 48px;
+  font-weight: var(--font-weight-semibold);
 }
 
 .form-note {
@@ -1038,9 +1038,9 @@
 
 /* Turnstile Widget */
 .cf-turnstile {
-  margin: var(--space-16) 0;
+  margin: var(--space-20) 0 var(--space-16);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 65px;
 }
 
