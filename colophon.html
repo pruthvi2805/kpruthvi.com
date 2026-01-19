@@ -44,93 +44,48 @@
         <div class="fade-in">
           <h1 style="font-size: var(--font-size-4xl); margin-bottom: var(--space-16);">How I Built This</h1>
           <p style="font-size: var(--font-size-lg); color: var(--color-text-secondary); margin-bottom: var(--space-64);">
-            Architecture decisions, tradeoffs, and why I chose this stack.
+            Technical decisions and why I chose this stack.
           </p>
 
           <!-- What it does -->
           <div style="margin-bottom: var(--space-48);">
             <h2 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-16);">What This Site Does</h2>
             <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-12);">
-              A professional portfolio with a working contact form. No server, no database, no backend maintenance.
+              This is a static portfolio with a serverless contact form. No servers to manage, no database to maintain.
             </p>
             <p style="color: var(--color-text-secondary); line-height: 1.6;">
-              When someone submits the contact form, it verifies they're human (Cloudflare Turnstile), sends me an email (Resend API), and responds instantly. All serverless.
+              When someone fills out the contact form, it verifies they're human using Cloudflare Turnstile, then sends me an email through Resend's API. The whole flow happens instantly at the edge.
             </p>
           </div>
 
           <!-- Tech Stack -->
           <div style="margin-bottom: var(--space-48);">
-            <h2 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-16);">Tech Stack & Why</h2>
+            <h2 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-16);">Tech Stack</h2>
             
             <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-12); color: var(--color-text);">Frontend</h3>
             <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-24);">
-              <strong>Pure HTML, CSS, vanilla JavaScript.</strong> No framework, no build step. Faster load times, zero dependencies, works everywhere. For a portfolio, React would be overkill.
+              Pure HTML, CSS, and vanilla JavaScript. No framework, no build step. For a portfolio site, React felt like overkill. The entire JS bundle is under 20KB, and pages load in under a second even on slower connections.
             </p>
 
             <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-12); color: var(--color-text);">Hosting: Cloudflare Pages</h3>
             <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-24);">
-              <strong>Free, global CDN, auto-SSL, GitHub integration.</strong> Push to main → live in 30 seconds. 300+ edge locations mean <50ms response times worldwide. Alternative was Vercel or Netlify, but Cloudflare's integration with Workers sealed it.
+              Connected to GitHub for automatic deployments. Push to main and the site goes live in about 30 seconds. Cloudflare's global CDN means fast response times from anywhere, and the integration with Workers made it the obvious choice over Vercel or Netlify.
             </p>
 
             <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-12); color: var(--color-text);">Backend: Cloudflare Workers</h3>
             <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-24);">
-              <strong>Serverless functions at the edge.</strong> No servers to maintain, scales automatically, runs in <10ms. Handles form submissions, validates CAPTCHA, triggers emails. Cost: $0 (100k requests/day free tier).
+              Serverless functions that run at the edge. Handles form submissions, validates the CAPTCHA token, and triggers the email. No servers to maintain, scales automatically, and executes in milliseconds.
             </p>
 
             <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-12); color: var(--color-text);">Email: Resend API</h3>
             <p style="color: var(--color-text-secondary); line-height: 1.6; margin-bottom: var(--space-24);">
-              <strong>Reliable, developer-friendly, 100 emails/day free.</strong> Tried MailChannels first (free but unreliable). Resend has better deliverability, proper SPF/DKIM setup, and clean API. Emails arrive in seconds, not spam folders.
+              Initially tried MailChannels but the deliverability was inconsistent. Switched to Resend for better reliability and proper SPF/DKIM configuration. Emails arrive in seconds and don't end up in spam folders.
             </p>
 
             <h3 style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-12); color: var(--color-text);">Spam Protection: Cloudflare Turnstile</h3>
             <p style="color: var(--color-text-secondary); line-height: 1.6;">
-              <strong>Privacy-friendly CAPTCHA.</strong> No Google reCAPTCHA tracking. Smart challenges only when needed. Free, integrates natively with Workers.
+              Chose this over Google reCAPTCHA to avoid tracking users. Turnstile is privacy-friendly and only shows challenges when necessary. Integrates cleanly with Workers.
             </p>
-          </div>
-
-          <!-- Tradeoffs -->
-          <div style="margin-bottom: var(--space-48);">
-            <h2 style="font-size: var(--font-size-2xl); margin-bottom: var(--space-16);">Tradeoffs I Made</h2>
-            
-            <div style="margin-bottom: var(--space-20);">
-              <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-8);">
-                ✅ No framework → Faster, simpler
-              </h3>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
-                <strong>Gain:</strong> 20KB total JS vs 200KB+ with React. Page loads in <1s on 3G.<br>
-                <strong>Cost:</strong> Manual DOM updates. For a static portfolio, worth it.
-              </p>
-            </div>
-
-            <div style="margin-bottom: var(--space-20);">
-              <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-8);">
-                ✅ Serverless → No infrastructure
-              </h3>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
-                <strong>Gain:</strong> Zero DevOps, auto-scaling, global edge deployment.<br>
-                <strong>Cost:</strong> Cold starts (rare, <10ms anyway). Vendor lock-in (acceptable for a portfolio).
-              </p>
-            </div>
-
-            <div style="margin-bottom: var(--space-20);">
-              <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-8);">
-                ✅ Email API → Reliability over cost
-              </h3>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
-                <strong>Gain:</strong> 99.9% deliverability, professional sender reputation.<br>
-                <strong>Cost:</strong> $0 now, $20/mo if I get 3,000+ emails (unlikely for a portfolio).
-              </p>
-            </div>
-
-            <div>
-              <h3 style="font-size: var(--font-size-base); font-weight: 600; color: var(--color-text); margin-bottom: var(--space-8);">
-                ⚠️ Mobile nav → Bottom tabs over hamburger
-              </h3>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
-                <strong>Gain:</strong> Always visible, iOS-native UX, zero Safari warnings.<br>
-                <strong>Cost:</strong> Takes vertical space. Hamburger menus triggered privacy warnings in Safari due to backdrop-filter. Switched to bottom tabs—more reliable, more familiar to mobile users.
-              </p>
-            </div>
           </div>
 
           <!-- Architecture -->
@@ -153,7 +108,7 @@
           <!-- Footer note -->
           <div style="padding-top: var(--space-32); border-top: 1px solid var(--color-border);">
             <p style="color: var(--color-text-tertiary); font-size: var(--font-size-sm); line-height: 1.6;">
-              <strong>Why document this?</strong> Senior architects make infrastructure decisions daily. This shows how I think: evaluate options, understand tradeoffs, optimize for the use case. A portfolio doesn't need Kubernetes.
+              I documented this because infrastructure decisions are a core part of system architecture work. Choosing the right tools for the job matters, and a portfolio site doesn't need Kubernetes.
             </p>
           </div>
 
