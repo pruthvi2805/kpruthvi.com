@@ -1144,10 +1144,9 @@ main:has(.resume-layout)::after {
    ============================================ */
 
 .contact-section {
-  padding: 80px 24px;
-  min-height: calc(100vh - var(--header-height));
+  padding: 64px 24px 80px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   position: relative;
   overflow: hidden;
@@ -1192,15 +1191,14 @@ main:has(.resume-layout)::after {
   gap: 80px;
   max-width: 960px;
   width: 100%;
-  align-items: center;
+  align-items: start;
   position: relative;
   z-index: 1;
 }
 
 /* Left Side - Info */
 .contact-info {
-  animation: fadeInUp 0.5s var(--ease-out) both;
-  animation-delay: 0.1s;
+  /* No animation - clean document-style layout */
 }
 
 .contact-info h1 {
@@ -1289,12 +1287,10 @@ main:has(.resume-layout)::after {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  padding: 36px 32px;
+  padding: 28px 28px;
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.06),
     0 0 0 1px rgba(193, 123, 95, 0.05);
-  animation: fadeInUp 0.5s var(--ease-out) both;
-  animation-delay: 0.2s;
   transition: box-shadow var(--transition-base), transform var(--transition-base);
 }
 
@@ -1316,13 +1312,6 @@ main:has(.resume-layout)::after {
   box-shadow:
     0 8px 30px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(212, 150, 125, 0.15);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-info,
-  .contact-form-card {
-    animation: none;
-  }
 }
 
 .contact-form {
@@ -1419,7 +1408,7 @@ main:has(.resume-layout)::after {
 
 @media (max-width: 768px) {
   .contact-section {
-    padding: 64px 20px 48px;
+    padding: 48px 20px 64px;
   }
 
   .contact-info h1 {
@@ -1431,7 +1420,7 @@ main:has(.resume-layout)::after {
   }
 
   .contact-form-card {
-    padding: 32px 24px;
+    padding: 24px 20px;
   }
 
   .form-row {
