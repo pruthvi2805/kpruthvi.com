@@ -394,35 +394,13 @@ img {
 
 /* Mobile Navigation - Bottom Tab Bar (iOS Style) */
 @media (max-width: 768px) {
-  /* Disable backdrop-filter on mobile to prevent Safari privacy warnings */
+  /* Hide header completely on mobile - navigation is in bottom bar */
   .header {
-    background-color: var(--color-bg);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-  
-  [data-theme="dark"] .header {
-    background-color: #000000;
-  }
-  
-  .nav {
-    padding: 0 var(--space-16);
-  }
-  
-  /* Just badge on mobile */
-  .brand-badge {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
-  }
-  
-  .brand-name {
     display: none;
   }
   
-  /* Hide hamburger completely */
-  .nav__toggle {
-    display: none;
+  main {
+    padding-top: 0;
   }
   
   /* Hide desktop menu */
