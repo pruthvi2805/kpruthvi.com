@@ -13,7 +13,7 @@
 
     @page {
       size: A4;
-      margin: 0;
+      margin: 12mm 0;
     }
 
     body {
@@ -27,37 +27,55 @@
       padding: 12mm 18mm;
     }
 
-    /* Print instruction banner */
+    /* Print instruction banner - minimal */
     .print-instruction {
-      background: #007aff;
-      color: white;
-      padding: 16px;
-      text-align: center;
-      margin: -12mm -18mm 20px -18mm;
-      font-size: 11pt;
+      margin: -12mm -18mm 28px -18mm;
+      padding: 12px 18mm;
+      background: #FAFAF8;
+      border-bottom: 1px solid #E8E6E3;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+
+    .print-instruction span {
+      font-size: 9pt;
+      color: #888;
+      margin-right: auto;
     }
 
     .print-instruction button {
-      background: white;
-      color: #007aff;
+      background: #C17B5F;
+      color: white;
       border: none;
-      padding: 10px 24px;
-      border-radius: 6px;
-      font-size: 11pt;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 9pt;
       font-weight: 600;
-      margin-top: 8px;
       cursor: pointer;
+      transition: background 0.2s ease;
     }
 
     .print-instruction button:hover {
-      background: #f0f0f0;
+      background: #A66248;
+    }
+
+    /* Loading state */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     @media print {
       .print-instruction {
         display: none;
       }
-      
+
       body {
         padding: 10mm 15mm;
       }
@@ -213,8 +231,14 @@
       body {
         padding: 10mm 15mm;
       }
-      
-      .section {
+
+      /* Keep section titles with their content */
+      .section-title {
+        page-break-after: avoid;
+      }
+
+      /* Keep skill categories together */
+      .skill-category {
         page-break-inside: avoid;
       }
     }
@@ -224,158 +248,184 @@
 
   <!-- Print Instruction Banner -->
   <div class="print-instruction">
-    <div>📄 Ready to download? Press Ctrl+P (or Cmd+P on Mac) and save as PDF</div>
-    <button onclick="window.print()">Print / Save as PDF</button>
+    <span>Print preview</span>
+    <button onclick="window.print()">Save as PDF</button>
   </div>
 
-  <!-- Header -->
-  <div class="header">
-    <h1>PRUTHVI KAUTICWAR</h1>
-    <div class="title">Senior Pega System Architect</div>
-    <div class="contact-info">
-      Utrecht, Netherlands · <a href="mailto:me@kpruthvi.com">me@kpruthvi.com</a><br>
-      <a href="https://nl.linkedin.com/in/pruthvikauticwar">linkedin.com/in/pruthvikauticwar</a> · <a href="https://github.com/pruthvi2805">github.com/pruthvi2805</a>
-    </div>
+  <!-- Content will be dynamically loaded -->
+  <div id="resume-content">
+    <div class="loading">Loading resume...</div>
   </div>
 
-  <!-- Professional Summary -->
-  <div class="section">
-    <h2 class="section-title">Professional Summary</h2>
-    <p class="summary">
-      Senior Pega System Architect with 10 years of experience delivering enterprise-scale KYC compliance platforms across leading European banks (ASN Bank, ING, Rabobank, American Express). Expertise spans Pega platform architecture, real-time data pipelines (Kafka, ETL), Constellation UI, and regulatory compliance (DNB, ECB). Proven track record designing scalable case management solutions, leading production deployments, and mentoring development teams in high-stakes financial environments.
-    </p>
-  </div>
+  <script>
+    async function loadResume() {
+      try {
+        const response = await fetch('resume.html');
+        const html = await response.text();
 
-  <!-- Technical Skills -->
-  <div class="section">
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="skills-grid">
-      <div class="skill-category">
-        <div class="skill-category-title">Core Pega Expertise</div>
-        <ul>
-          <li>Case Management & Flow Design</li>
-          <li>Ruleset & Class Specialization</li>
-          <li>Queue Processors & Job Schedulers</li>
-          <li>Constellation UI Development</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <div class="skill-category-title">KYC & Compliance</div>
-        <ul>
-          <li>Risk Engine & EDR Framework</li>
-          <li>Perpetual KYC & Customer Outreach</li>
-          <li>Regulatory Alignment (DNB, ECB)</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <div class="skill-category-title">Integrations & Data</div>
-        <ul>
-          <li>Kafka Streaming & ETL Pipelines</li>
-          <li>AWS Athena, REST/SOAP Services</li>
-          <li>Data Flows & Reporting</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <div class="skill-category-title">DevOps & Quality</div>
-        <ul>
-          <li>PDM Deployments & Release Management</li>
-          <li>PegaUnit & Scenario Testing</li>
-          <li>Production Support & Incident Handling</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+        // Parse the HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
 
-  <!-- Work Experience -->
-  <div class="section">
-    <h2 class="section-title">Professional Experience</h2>
+        // Build the resume content
+        let content = '';
 
-    <div class="job">
-      <div class="job-header">
-        <div class="job-title">Senior Pega System Architect – KYC</div>
-        <div class="company">ASN Bank (de Volksbank), Utrecht, Netherlands</div>
-        <div class="job-meta">February 2024 – Present</div>
-      </div>
-      <ul>
-        <li>Architected and delivered end-to-end data pipelines (Pega → Kafka → AWS Athena) enabling real-time regulatory reporting and business analytics for KYC operations</li>
-        <li>Designed Kafka topic structure and streaming architecture supporting downstream ETL processes for compliance monitoring across individual and business customer workflows</li>
-        <li>Enhanced Risk Engine, EDR Framework, Perpetual KYC, and Customer Outreach modules to meet evolving DNB and ECB regulatory requirements</li>
-        <li>Delivered production-ready Constellation UI applications, modernizing KYC interfaces with component-based architecture</li>
-        <li>Led zero-downtime production deployments via PDM and resolved critical incidents maintaining system stability</li>
-      </ul>
-    </div>
+        // Header (static - contact info)
+        content += `
+          <div class="header">
+            <h1>PRUTHVI KAUTICWAR</h1>
+            <div class="title">Senior Pega System Architect</div>
+            <div class="contact-info">
+              Utrecht, Netherlands · <a href="mailto:me@kpruthvi.com">me@kpruthvi.com</a><br>
+              <a href="https://nl.linkedin.com/in/pruthvikauticwar">linkedin.com/in/pruthvikauticwar</a> · <a href="https://github.com/pruthvi2805">github.com/pruthvi2805</a>
+            </div>
+          </div>
+        `;
 
-    <div class="job">
-      <div class="job-header">
-        <div class="job-title">Pega Senior System Architect</div>
-        <div class="company">ING Bank, Netherlands</div>
-        <div class="job-meta">May 2021 – January 2024</div>
-      </div>
-      <ul>
-        <li>Standardized KYC Risk Engine rule configurations across the platform, improving regulatory consistency and reducing processing time by optimizing performance bottlenecks</li>
-        <li>Designed and built end-to-end case processing flows with comprehensive exception handling and audit trail compliance</li>
-        <li>Led solution architecture discussions and technical design reviews for critical KYC functionality</li>
-        <li>Mentored team of junior developers on Pega best practices, code quality standards, and platform capabilities</li>
-      </ul>
-    </div>
+        // Professional Summary
+        const summarySection = doc.querySelector('#professional-summary');
+        if (summarySection) {
+          const paragraphs = summarySection.querySelectorAll('p');
+          let summaryText = '';
+          paragraphs.forEach(p => {
+            summaryText += p.textContent.trim() + ' ';
+          });
+          content += `
+            <div class="section">
+              <h2 class="section-title">Professional Summary</h2>
+              <p class="summary">${summaryText.trim()}</p>
+            </div>
+          `;
+        }
 
-    <div class="job">
-      <div class="job-header">
-        <div class="job-title">Pega Senior System Architect</div>
-        <div class="company">Rabobank, Netherlands</div>
-        <div class="job-meta">October 2018 – April 2021</div>
-      </div>
-      <ul>
-        <li>Built enterprise-scale reusable framework reducing delivery time for new KYC/CDD features and eliminating code duplication across development teams</li>
-        <li>Designed and implemented REST/SOAP integration patterns for external data validations, establishing standard approach adopted across multiple projects</li>
-        <li>Drove architecture decisions on performance optimization and system scalability for large-scale banking operations</li>
-        <li>Led production release cycles and established streamlined deployment processes reducing release risk</li>
-      </ul>
-    </div>
+        // Technical Skills (before experience for better print layout)
+        const skillsSection = doc.querySelector('#skills');
+        if (skillsSection) {
+          const skillGroups = skillsSection.querySelectorAll('.skill-group');
+          let skillsHtml = '<div class="skills-grid">';
 
-    <div class="job">
-      <div class="job-header">
-        <div class="job-title">Pega Developer</div>
-        <div class="company">American Express, India</div>
-        <div class="job-meta">January 2016 – September 2018</div>
-      </div>
-      <ul>
-        <li>Built automated work allocation and routing framework optimizing case distribution across operations teams</li>
-        <li>Served on SWAT team resolving critical production incidents, improving mean time to resolution and system reliability</li>
-        <li>Enhanced credit risk assessment workflows improving compliance accuracy and operational throughput</li>
-      </ul>
-    </div>
-  </div>
+          skillGroups.forEach(group => {
+            const title = group.querySelector('.skill-group__title')?.textContent || '';
+            const pills = group.querySelectorAll('.skill-pill');
 
-  <!-- Education -->
-  <div class="section">
-    <h2 class="section-title">Education</h2>
-    <div class="edu-cert">
-      <div class="edu-cert-title">Bachelor of Technology in Computer Science</div>
-      <div class="edu-cert-detail">SRM University, Chennai, India · 2015</div>
-    </div>
-  </div>
+            skillsHtml += `<div class="skill-category"><div class="skill-category-title">${title}</div><ul>`;
+            pills.forEach(pill => {
+              skillsHtml += `<li>${pill.textContent}</li>`;
+            });
+            skillsHtml += '</ul></div>';
+          });
 
-  <!-- Certifications -->
-  <div class="section">
-    <h2 class="section-title">Certifications</h2>
-    <div class="edu-cert">
-      <div class="edu-cert-title">Pega Certified Senior System Architect (CSSA)</div>
-      <div class="edu-cert-detail">Pegasystems · 2018</div>
-    </div>
-    <div class="edu-cert">
-      <div class="edu-cert-title">Pega Certified System Architect (CSA)</div>
-      <div class="edu-cert-detail">Pegasystems · 2016</div>
-    </div>
-    <div class="edu-cert">
-      <div class="edu-cert-title">Pega Certified Business Architect (CPBA)</div>
-      <div class="edu-cert-detail">Pegasystems · 2020</div>
-    </div>
-    <div class="edu-cert">
-      <div class="edu-cert-title">Constellation Adoption Mission</div>
-      <div class="edu-cert-detail">Pegasystems · 2024</div>
-    </div>
-  </div>
+          skillsHtml += '</div>';
+          content += `
+            <div class="section">
+              <h2 class="section-title">Technical Skills</h2>
+              ${skillsHtml}
+            </div>
+          `;
+        }
+
+        // Work Experience
+        const experienceSection = doc.querySelector('#work-experience');
+        if (experienceSection) {
+          const jobs = experienceSection.querySelectorAll('.timeline-item');
+          let jobsHtml = '';
+
+          jobs.forEach(job => {
+            const title = job.querySelector('.timeline-item__title')?.textContent || '';
+            const subtitle = job.querySelector('.timeline-item__subtitle')?.textContent || '';
+            const date = job.querySelector('.timeline-item__date')?.textContent || '';
+            const listItems = job.querySelectorAll('.timeline-item__list li');
+
+            // Parse subtitle into company and location
+            const [company, location] = subtitle.split('·').map(s => s.trim());
+
+            jobsHtml += `
+              <div class="job">
+                <div class="job-header">
+                  <div class="job-title">${title}</div>
+                  <div class="company">${company}${location ? ', ' + location : ''}</div>
+                  <div class="job-meta">${date}</div>
+                </div>
+                <ul>
+            `;
+
+            listItems.forEach(li => {
+              jobsHtml += `<li>${li.textContent}</li>`;
+            });
+
+            jobsHtml += '</ul></div>';
+          });
+
+          content += `
+            <div class="section">
+              <h2 class="section-title">Professional Experience</h2>
+              ${jobsHtml}
+            </div>
+          `;
+        }
+
+        // Education
+        const educationSection = doc.querySelector('#education');
+        if (educationSection) {
+          const eduItem = educationSection.querySelector('.education-item');
+          if (eduItem) {
+            const title = eduItem.querySelector('.education-item__title')?.textContent || '';
+            const subtitle = eduItem.querySelector('.education-item__subtitle')?.textContent || '';
+
+            content += `
+              <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="edu-cert">
+                  <div class="edu-cert-title">${title}</div>
+                  <div class="edu-cert-detail">${subtitle}</div>
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        // Certifications
+        const certsSection = doc.querySelector('#certifications');
+        if (certsSection) {
+          const certs = certsSection.querySelectorAll('.certification-item');
+          let certsHtml = '';
+
+          certs.forEach(cert => {
+            const title = cert.querySelector('.certification-item__title')?.textContent || '';
+            const meta = cert.querySelector('.certification-item__meta')?.textContent || '';
+
+            certsHtml += `
+              <div class="edu-cert">
+                <div class="edu-cert-title">${title}</div>
+                <div class="edu-cert-detail">${meta}</div>
+              </div>
+            `;
+          });
+
+          content += `
+            <div class="section">
+              <h2 class="section-title">Certifications</h2>
+              ${certsHtml}
+            </div>
+          `;
+        }
+
+        // Insert the content
+        document.getElementById('resume-content').innerHTML = content;
+
+      } catch (error) {
+        console.error('Error loading resume:', error);
+        document.getElementById('resume-content').innerHTML = `
+          <div class="loading" style="color: #c00;">
+            Error loading resume. Please make sure you're viewing this from a web server.
+          </div>
+        `;
+      }
+    }
+
+    // Load on page ready
+    loadResume();
+  </script>
 
 </body>
 </html>

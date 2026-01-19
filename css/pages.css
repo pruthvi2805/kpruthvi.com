@@ -332,10 +332,84 @@ main:has(.resume-layout)::after {
   }
 }
 
+/* Mobile Section Navigation - Horizontal scrollable tabs */
+.resume-mobile-nav {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .resume-layout {
-    padding: var(--space-40) var(--space-20);
+  .resume-mobile-nav {
+    display: block;
+    position: sticky;
+    top: 44px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    z-index: 100;
+    margin: 0 calc(-1 * var(--space-20));
+    margin-bottom: var(--space-24);
+    padding: 0 var(--space-20);
   }
+
+  .resume-mobile-nav__list {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+    margin: 0;
+    padding: var(--space-12) 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .resume-mobile-nav__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .resume-mobile-nav__link {
+    flex-shrink: 0;
+    padding: var(--space-8) var(--space-14);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    background-color: transparent;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .resume-mobile-nav__link.active {
+    color: var(--color-primary);
+    background-color: rgba(193, 123, 95, 0.1);
+  }
+
+  [data-theme="dark"] .resume-mobile-nav__link.active {
+    background-color: rgba(212, 150, 125, 0.15);
+  }
+
+  /* Fade gradient to indicate scrollable content */
+  .resume-mobile-nav::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to left, var(--color-bg), transparent);
+    pointer-events: none;
+  }
+
+  .resume-layout {
+    padding: var(--space-12) var(--space-20) var(--space-40);
+  }
+
+  /* Add scroll margin to sections so headers aren't hidden behind sticky nav */
+  .resume-section {
+    scroll-margin-top: 110px; /* header (44px) + mobile nav (~56px) + buffer */
+  }
+
 }
 
 /* Resume footer - download link */
@@ -1197,10 +1271,6 @@ main:has(.resume-layout)::after {
 }
 
 /* Left Side - Info */
-.contact-info {
-  /* No animation - clean document-style layout */
-}
-
 .contact-info h1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -1208,6 +1278,8 @@ main:has(.resume-layout)::after {
   margin-bottom: 16px;
   line-height: 1.15;
   letter-spacing: -0.025em;
+  animation: fadeInUp 0.5s var(--ease-out) both;
+  animation-delay: 0.1s;
 }
 
 /* Decorative accent */
@@ -1227,6 +1299,8 @@ main:has(.resume-layout)::after {
   line-height: 1.6;
   margin-bottom: 40px;
   font-weight: 400;
+  animation: fadeInUp 0.5s var(--ease-out) both;
+  animation-delay: 0.2s;
 }
 
 .contact-meta {
@@ -1236,6 +1310,8 @@ main:has(.resume-layout)::after {
   font-size: 15px;
   color: var(--color-text-secondary);
   line-height: 1.6;
+  animation: fadeInUp 0.5s var(--ease-out) both;
+  animation-delay: 0.3s;
 }
 
 .contact-meta p {
@@ -1292,6 +1368,8 @@ main:has(.resume-layout)::after {
     0 4px 20px rgba(0, 0, 0, 0.06),
     0 0 0 1px rgba(193, 123, 95, 0.05);
   transition: box-shadow var(--transition-base), transform var(--transition-base);
+  animation: fadeInUp 0.5s var(--ease-out) both;
+  animation-delay: 0.2s;
 }
 
 .contact-form-card:hover {
@@ -1434,6 +1512,15 @@ main:has(.resume-layout)::after {
   .btn-submit {
     font-size: 16px;
     min-height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-info h1,
+  .contact-description,
+  .contact-meta,
+  .contact-form-card {
+    animation: none;
   }
 }
 

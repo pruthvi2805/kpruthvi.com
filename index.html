@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Prevent flash of wrong theme by applying saved theme immediately -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      document.documentElement.classList.add('no-transitions');
+    })();
+  </script>
   <meta name="description" content="Pruthvi Kauticwar - Senior Pega System Architect. 10 years building KYC compliance systems for ASN Bank, ING, Rabobank. Based in Utrecht, Netherlands.">
   <meta name="keywords" content="Pega System Architect, Senior Pega Developer, KYC, Constellation UI, Compliance, ASN Bank, ING, Rabobank, Utrecht, Netherlands">
   <meta name="author" content="Pruthvi Kauticwar">
@@ -36,7 +46,7 @@
     <nav class="nav">
       <a href="index.html" class="nav__brand">
         <span class="brand-badge">PK</span>
-        <span class="brand-name">Pruthvi Kauticwar</span>
+        <span class="brand-name"><span class="brand-name__first">Pruthvi</span> <span class="brand-name__last">Kauticwar</span></span>
       </a>
 
       <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -76,6 +86,29 @@
       </div>
     </div>
   </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+    <ul class="mobile-bottom-nav__list">
+      <li><a href="index.html" class="mobile-bottom-nav__link active">Home</a></li>
+      <li><a href="resume.html" class="mobile-bottom-nav__link">Resume</a></li>
+      <li><a href="contact.html" class="mobile-bottom-nav__link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__row">
+        <p class="footer__text">
+          &copy; 2026 Pruthvi Kauticwar
+        </p>
+        <button class="theme-toggle theme-toggle--footer" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon"></span>
+        </button>
+      </div>
+    </div>
+  </footer>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>

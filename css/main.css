@@ -121,6 +121,14 @@
   --z-modal: 1050;
 }
 
+/* Disable transitions on initial page load to prevent flash */
+.no-transitions,
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
+}
+
 /* Dark Mode - Warm Black */
 [data-theme="dark"] {
   --color-primary: #D4967D;
@@ -434,6 +442,11 @@ img {
   transition: opacity var(--transition-fast);
 }
 
+/* Header download button - hidden on desktop */
+.header__download {
+  display: none;
+}
+
 .nav__toggle-icon,
 .nav__toggle-icon::before,
 .nav__toggle-icon::after {
@@ -491,43 +504,32 @@ img {
     padding: 0 var(--space-16);
   }
 
-  /* Hide full name on mobile, show only badge */
-  .brand-name {
+  /* Hide name on homepage mobile - full name already shown on page */
+  .homepage .brand-name {
     display: none;
   }
 
-  /* Show hamburger toggle on mobile */
-  .nav__toggle {
+  /* Header download button - mobile only */
+  .header__download {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: auto;
+    color: var(--color-text-tertiary);
+    border-radius: var(--radius-full);
+    transition: color var(--transition-fast);
   }
 
-  /* Hide desktop menu by default on mobile */
+  .header__download:active {
+    color: var(--color-primary);
+  }
+
+  /* Hide hamburger and desktop nav on mobile - using bottom nav instead */
+  .nav__toggle,
   .nav__menu {
-    position: fixed;
-    top: 44px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--color-bg);
-    flex-direction: column;
-    padding: var(--space-32) var(--space-24);
-    transform: translateX(100%);
-    transition: transform 0.3s var(--ease-out);
-    z-index: var(--z-modal);
-  }
-
-  .nav__menu.active {
-    transform: translateX(0);
-  }
-
-  .nav__list {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-24);
-  }
-
-  .nav__link {
-    font-size: var(--font-size-lg);
+    display: none;
   }
 
   /* Adjust main padding for smaller header */
@@ -542,9 +544,83 @@ img {
   }
 }
 
-/* Hide bottom nav entirely - no longer used */
+/* ============================================
+   MOBILE BOTTOM NAVIGATION
+   ============================================ */
+
 .mobile-bottom-nav {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    z-index: var(--z-fixed);
+    padding: 0 var(--space-8);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-bottom-nav__list {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-bottom-nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) var(--space-16);
+    text-decoration: none;
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+    position: relative;
+  }
+
+  .mobile-bottom-nav__link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 32px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: transform var(--transition-fast);
+  }
+
+  .mobile-bottom-nav__link.active {
+    color: var(--color-primary);
+  }
+
+  .mobile-bottom-nav__link.active::before {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  /* Add padding to body so content isn't hidden behind bottom nav */
+  body {
+    padding-bottom: 56px;
+  }
+
+  /* Adjust footer margin on mobile */
+  .footer {
+    margin-bottom: 0;
+  }
 }
 
 /* ============================================

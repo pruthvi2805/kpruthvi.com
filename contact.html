@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Prevent flash of wrong theme by applying saved theme immediately -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('theme');
+      if (theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      document.documentElement.classList.add('no-transitions');
+    })();
+  </script>
   <meta name="description" content="Hire Pruthvi Kauticwar - Senior Pega System Architect in Utrecht, Netherlands. Open to Pega architecture roles and consulting. Email: me@kpruthvi.com">
   <meta name="author" content="Pruthvi Kauticwar">
 
@@ -32,7 +42,7 @@
     <nav class="nav">
       <a href="index.html" class="nav__brand">
         <span class="brand-badge">PK</span>
-        <span class="brand-name">Pruthvi Kauticwar</span>
+        <span class="brand-name"><span class="brand-name__first">Pruthvi</span> <span class="brand-name__last">Kauticwar</span></span>
       </a>
 
       <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -109,7 +119,7 @@
                 <textarea id="message" name="message" placeholder="Hi! I'd love to hear about the opportunity or what's on your mind..." required></textarea>
               </div>
 
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAACNQMxBxxzSL2_0t" data-theme="light" data-size="compact" data-appearance="interaction-only"></div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACNQMxBxxzSL2_0t" data-size="compact" data-appearance="interaction-only"></div>
 
               <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
 
@@ -121,6 +131,15 @@
       </div>
     </section>
   </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+    <ul class="mobile-bottom-nav__list">
+      <li><a href="index.html" class="mobile-bottom-nav__link">Home</a></li>
+      <li><a href="resume.html" class="mobile-bottom-nav__link">Resume</a></li>
+      <li><a href="contact.html" class="mobile-bottom-nav__link active">Contact</a></li>
+    </ul>
+  </nav>
 
   <!-- Footer -->
   <footer class="footer">

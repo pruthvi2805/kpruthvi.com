@@ -7,33 +7,36 @@ class ThemeManager {
   constructor() {
     this.theme = localStorage.getItem('theme') || 'light';
     this.themeToggles = document.querySelectorAll('.theme-toggle');
+    this.isInitialLoad = true;
     this.init();
   }
 
   init() {
-    // Set initial theme
-    this.setTheme(this.theme);
+    // Theme is already set by inline script in <head>, just sync state
+    document.documentElement.setAttribute('data-theme', this.theme);
+    this.updateAriaLabels();
+    this.updateTurnstileTheme();
 
     // Listen for theme toggle clicks on all toggle buttons
     this.themeToggles.forEach(toggle => {
       toggle.addEventListener('click', () => this.toggleTheme());
     });
+
+    // Enable transitions after initial render
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.documentElement.classList.remove('no-transitions');
+        this.isInitialLoad = false;
+      });
+    });
   }
 
   setTheme(theme) {
     this.theme = theme;
-
-    // Add smooth transition class
-    document.documentElement.classList.add('theme-transitioning');
-
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     this.updateAriaLabels();
-
-    // Remove transition class after animation
-    setTimeout(() => {
-      document.documentElement.classList.remove('theme-transitioning');
-    }, 500);
+    this.updateTurnstileTheme();
   }
 
   toggleTheme() {
@@ -47,6 +50,21 @@ class ThemeManager {
         this.theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
       );
     });
+  }
+
+  updateTurnstileTheme() {
+    const turnstileWidget = document.querySelector('.cf-turnstile');
+    if (turnstileWidget) {
+      turnstileWidget.setAttribute('data-theme', this.theme);
+      // Re-render Turnstile if it's already loaded and this isn't initial load
+      if (!this.isInitialLoad && typeof turnstile !== 'undefined') {
+        try {
+          turnstile.reset();
+        } catch (e) {
+          // Widget may not be rendered yet
+        }
+      }
+    }
   }
 }
 
@@ -138,6 +156,11 @@ class SmoothScroll {
 
   init() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      // Skip resume TOC links - handled by ResumeTOC class
+      if (anchor.closest('.resume-toc') || anchor.closest('.resume-mobile-nav')) {
+        return;
+      }
+
       anchor.addEventListener('click', (e) => {
         const targetId = anchor.getAttribute('href');
         if (targetId === '#') return;
@@ -149,10 +172,20 @@ class SmoothScroll {
           // Calculate offset for header
           const header = document.querySelector('.header');
           let totalOffset = header ? header.offsetHeight : 0;
+
+          // Account for sticky mobile nav on resume page
+          const mobileNav = document.querySelector('.resume-mobile-nav');
+          if (mobileNav && window.innerWidth <= 768) {
+            totalOffset += mobileNav.offsetHeight;
+          }
+
           totalOffset += 20; // Buffer space
 
           const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - totalOffset;
+          let offsetPosition = elementPosition - totalOffset;
+
+          // Ensure we don't scroll above 0 (for first section)
+          offsetPosition = Math.max(0, offsetPosition);
 
           window.scrollTo({
             top: offsetPosition,
@@ -318,40 +351,101 @@ class ContactFormHandler {
 class ResumeTOC {
   constructor() {
     this.toc = document.querySelector('.resume-toc');
-    this.links = document.querySelectorAll('.resume-toc__link');
+    this.mobileNav = document.querySelector('.resume-mobile-nav');
+    this.desktopLinks = document.querySelectorAll('.resume-toc__link');
+    this.mobileLinks = document.querySelectorAll('.resume-mobile-nav__link');
     this.sections = [];
+    this.currentActiveId = null;
+    this.isProgrammaticScroll = false;
     this.init();
   }
 
   init() {
-    if (!this.toc || this.links.length === 0) return;
+    // Need either desktop or mobile nav to function
+    if (this.desktopLinks.length === 0 && this.mobileLinks.length === 0) return;
 
-    // Gather sections
-    this.links.forEach(link => {
+    // Gather sections from whichever nav exists
+    const links = this.desktopLinks.length > 0 ? this.desktopLinks : this.mobileLinks;
+    links.forEach(link => {
       const id = link.getAttribute('href').slice(1);
       const section = document.getElementById(id);
-      if (section) this.sections.push({ id, element: section, link });
+      if (section) this.sections.push({ id, element: section });
     });
 
-    // Scroll listener with throttle
-    let ticking = false;
+    // Handle clicks on mobile nav links
+    this.mobileLinks.forEach(link => {
+      link.addEventListener('click', (e) => this.handleTabClick(e, link));
+    });
+
+    // Handle clicks on desktop TOC links
+    this.desktopLinks.forEach(link => {
+      link.addEventListener('click', (e) => this.handleTabClick(e, link));
+    });
+
+    // Only update on manual scroll (detect scroll stop)
+    let scrollTimer = null;
     window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          this.updateActiveLink();
-          ticking = false;
-        });
-        ticking = true;
-      }
+      if (this.isProgrammaticScroll) return;
+
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        this.updateActiveFromScroll();
+      }, 100);
     });
 
     // Initial check
-    this.updateActiveLink();
+    this.updateActiveFromScroll();
   }
 
-  updateActiveLink() {
-    const scrollPos = window.scrollY + 120; // Offset for header
+  handleTabClick(e, link) {
+    const id = link.getAttribute('href').slice(1);
+    const targetElement = document.getElementById(id);
+    if (!targetElement) return;
 
+    e.preventDefault();
+
+    // Set active immediately
+    this.setActiveLink(id);
+
+    // Scroll to section
+    this.isProgrammaticScroll = true;
+
+    const header = document.querySelector('.header');
+    let offset = header ? header.offsetHeight : 0;
+
+    if (this.mobileNav && window.innerWidth <= 768) {
+      offset += this.mobileNav.offsetHeight;
+    }
+    offset += 20;
+
+    const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+
+    // Re-enable scroll tracking after animation
+    setTimeout(() => {
+      this.isProgrammaticScroll = false;
+    }, 1000);
+  }
+
+  setActiveLink(id) {
+    this.currentActiveId = id;
+
+    // Update all links
+    [...this.desktopLinks, ...this.mobileLinks].forEach(link => {
+      const isActive = link.getAttribute('href') === `#${id}`;
+      link.classList.toggle('active', isActive);
+    });
+
+    // Scroll mobile nav to show active tab
+    const activeLink = [...this.mobileLinks].find(l => l.getAttribute('href') === `#${id}`);
+    if (activeLink && this.mobileNav) {
+      activeLink.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+    }
+  }
+
+  updateActiveFromScroll() {
+    const scrollPos = window.scrollY + 150;
     let activeSection = this.sections[0];
 
     for (const section of this.sections) {
@@ -360,9 +454,8 @@ class ResumeTOC {
       }
     }
 
-    this.links.forEach(link => link.classList.remove('active'));
-    if (activeSection) {
-      activeSection.link.classList.add('active');
+    if (this.currentActiveId !== activeSection.id) {
+      this.setActiveLink(activeSection.id);
     }
   }
 }
