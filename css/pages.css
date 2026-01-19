@@ -800,15 +800,10 @@
 
 /* Turnstile - completely hidden unless active */
 .contact-form .cf-turnstile {
-  min-height: 0 !important;
-  height: auto;
-}
-
-.contact-form .cf-turnstile > div {
   display: none;
 }
 
-.contact-form .cf-turnstile:has(iframe[style*="visible"]) > div {
+.contact-form .cf-turnstile:has(iframe[style*="visible"]) {
   display: block;
   margin: 16px 0 12px 0;
 }
