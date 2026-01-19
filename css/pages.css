@@ -516,10 +516,19 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Subtle emphasis on featured cards */
+.project-card--featured {
+  border-color: rgba(37, 99, 235, 0.15);
+}
+
 .project-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-2px);
   border-color: var(--color-border-hover);
+}
+
+.project-card--featured:hover {
+  border-color: rgba(37, 99, 235, 0.25);
 }
 
 /* Touch feedback for mobile */
