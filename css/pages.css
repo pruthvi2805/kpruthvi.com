@@ -303,6 +303,7 @@
 
 @media (max-width: 768px) {
   .resume-section-nav {
+    top: 0;
     padding: var(--space-8) var(--space-16);
     gap: var(--space-8);
     justify-content: flex-start;

@@ -403,6 +403,11 @@ img {
     padding-top: 0;
   }
   
+  /* Add top padding for pages with sticky navigation */
+  .resume-content {
+    padding-top: var(--space-20);
+  }
+  
   /* Hide desktop menu */
   .nav__menu {
     display: none;
