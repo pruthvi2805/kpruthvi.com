@@ -24,8 +24,8 @@
   --color-shadow: rgba(0, 0, 0, 0.06);
   --color-shadow-elevated: rgba(0, 0, 0, 0.1);
   
-  /* Typography - San Francisco Inspired */
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  /* Typography - Inter */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", sans-serif;
   
   /* Refined Type Scale */
   --font-size-xs: 0.75rem;      /* 12px */
@@ -318,10 +318,18 @@ img {
 }
 
 .brand-name {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-  letter-spacing: -0.01em;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.01em;
+}
+
+.brand-name__first {
+  color: var(--color-text-secondary);
+}
+
+.brand-name__last {
+  color: var(--color-text-tertiary);
 }
 
 .nav__menu {
