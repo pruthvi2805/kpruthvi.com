@@ -1,64 +1,92 @@
-# Personal Portfolio
+# Portfolio
 
-Professional portfolio website built with vanilla HTML, CSS, and JavaScript. No frameworks, no build tools - just clean, performant code.
+Personal portfolio website for a senior Pega system architect. Built with vanilla HTML, CSS, and JavaScript - no frameworks or build tools.
 
-## Tech Stack
+## Stack
 
-- HTML5
-- CSS3 (Custom Properties, Flexbox, Grid)
-- Vanilla JavaScript (ES6+)
+- HTML5, CSS3, vanilla JavaScript
+- Cloudflare Pages (hosting)
+- Cloudflare Workers (contact form backend)
+- Resend (email delivery)
+- Turnstile (spam protection)
 
 ## Features
 
-- Responsive design
-- Dark mode with localStorage persistence
-- Mobile navigation
-- Scroll animations
-- Print-optimized resume page
-- SEO meta tags
+- Responsive design (mobile bottom nav on small screens)
+- Contact form with email integration
+- Print-optimized resume (resume-print.html)
+- Scroll animations and section navigation
+- SEO optimized (sitemap, meta tags, robots.txt)
 
-## Project Structure
+## Structure
 
 ```
-├── index.html
-├── resume.html
-├── projects.html
-├── contact.html
+├── index.html              # landing page
+├── resume.html             # web resume with section nav
+├── resume-print.html       # print-friendly version
+├── projects.html           # professional impact highlights
+├── contact.html            # contact form
+├── colophon.html           # how this site was built
+├── worker.js               # cloudflare worker for contact form
+├── sitemap.xml
+├── robots.txt
 ├── css/
-│   ├── main.css
-│   ├── components.css
-│   └── pages.css
-├── js/
-│   └── main.js
-└── assets/
-    └── images/
+│   ├── main.css           # global styles, header, nav
+│   ├── components.css     # buttons, cards, tags
+│   └── pages.css          # page-specific layouts
+└── js/
+    └── main.js            # scroll, nav, form handler
 ```
 
 ## Local Development
 
-### Using Live Server (VS Code)
-
-1. Install the Live Server extension
-2. Right-click `index.html` and select "Open with Live Server"
-3. Site opens at `http://localhost:5500`
-
-### Using Python
+Open `index.html` in a browser, or use:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then navigate to `http://localhost:8000`
+Then go to `http://localhost:8000`
 
-### Direct File Access
+For the contact form to work locally, you'll need the Cloudflare Worker deployed (see below).
 
-Open `index.html` directly in your browser. Note that some features may not work without a proper server.
+## Contact Form Setup
+
+The contact form uses Cloudflare Workers and Resend for email delivery.
+
+### Required Environment Variables (Worker)
+
+- `TURNSTILE_SECRET` - Cloudflare Turnstile secret key
+- `RESEND_API_KEY` - Resend API key
+
+### DNS Setup
+
+If using a custom domain with Resend, add their verification records in Cloudflare DNS.
+
+### Deploy Worker
+
+```bash
+npx wrangler deploy
+```
+
+Update the form action URL in `contact.html` to match your worker URL.
+
+## Deployment
+
+Currently live on Cloudflare Pages at `kpruthvi.com`
+
+To deploy your own:
+
+1. Push to GitHub
+2. Create new site in Cloudflare Pages
+3. Connect repository
+4. Build settings: None (static site)
+5. Deploy
+6. Add custom domain if needed
 
 ## Customization
 
-### Theme Colors
-
-Edit CSS variables in `css/main.css`:
+Colors and theme variables are in `css/main.css`:
 
 ```css
 :root {
@@ -68,62 +96,6 @@ Edit CSS variables in `css/main.css`:
 }
 ```
 
-### Adding Projects
-
-Duplicate the project card structure in `projects.html`:
-
-```html
-<article class="card project-card fade-in">
-  <div class="project-card__image">🚀</div>
-  <div class="project-card__content">
-    <h2 class="project-card__title">Project Name</h2>
-    <p class="project-card__description">Description</p>
-    <div class="project-card__tech">
-      <span class="tag tag-primary">Tech</span>
-    </div>
-    <a href="#" class="btn btn-primary btn-sm">View Details</a>
-  </div>
-</article>
-```
-
-## Deployment
-
-### Cloudflare Pages
-
-1. Push to GitHub
-2. Connect repository in Cloudflare Pages dashboard
-3. Leave build settings empty (static site)
-4. Deploy
-
-### GitHub Pages
-
-1. Repository Settings → Pages
-2. Source: Deploy from branch
-3. Branch: main
-4. Save
-
-### Netlify
-
-Drag and drop the project folder onto the Netlify dashboard.
-
-## Browser Support
-
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers
-
-## Performance
-
-- No external dependencies
-- Minimal JavaScript
-- Optimized CSS
-- Fast initial load
-
 ## License
 
-© 2026 Pruthvi Kautikwar
-
----
-
-Built with vanilla JavaScript - no frameworks required.
+Built by Pruthvi Kauticwar, 2026
