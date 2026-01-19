@@ -388,16 +388,15 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--color-bg-elevated);
-    backdrop-filter: saturate(180%) blur(var(--blur-md));
-    -webkit-backdrop-filter: saturate(180%) blur(var(--blur-md));
+    background-color: var(--color-bg);
     flex-direction: column;
     gap: 0;
     padding: var(--space-32) var(--space-24);
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.5s var(--ease-out), opacity 0.5s var(--ease-out), visibility 0.5s;
+    transition: transform 0.3s var(--ease-out), opacity 0.3s var(--ease-out), visibility 0.3s;
+    z-index: 999;
   }
   
   .nav__menu.active {

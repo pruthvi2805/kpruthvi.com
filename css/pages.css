@@ -204,16 +204,34 @@
 /* Adjust for mobile */
 @media (max-width: 768px) {
   .floating-download-btn {
-    bottom: var(--space-24);
-    right: var(--space-24);
-    padding: var(--space-16) var(--space-24);
-    min-height: 48px;
+    bottom: var(--space-16);
+    right: var(--space-16);
+    padding: var(--space-12) var(--space-20);
+    min-height: 44px;
     font-size: var(--font-size-sm);
+    gap: var(--space-8);
   }
   
   .floating-download-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .floating-download-btn span {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Hide on very small screens to avoid covering content */
+@media (max-width: 480px) {
+  .floating-download-btn span {
+    display: none;
+  }
+  
+  .floating-download-btn {
+    padding: var(--space-12);
+    min-width: 44px;
+    border-radius: var(--radius-full);
   }
 }
 
