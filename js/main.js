@@ -503,9 +503,7 @@ class ContactFormHandler {
 
     // Get form data
     const formData = new FormData(this.form);
-    const firstName = formData.get('firstName');
-    const lastName = formData.get('lastName');
-    const name = `${firstName} ${lastName}`;
+    const name = formData.get('firstName') || ''; // Using firstName field for name
     
     // Get Turnstile token
     let turnstileResponse = '';
