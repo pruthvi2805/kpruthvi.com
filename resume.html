@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Resume: Pruthvi Kauticwar, Senior Pega System Architect. 10 years experience at ASN Bank, ING, Rabobank, American Express. CSSA certified. Constellation UI expert.">
   <meta name="author" content="Pruthvi Kauticwar">
-  
+
   <title>Resume - Pruthvi Kauticwar | Senior Pega System Architect</title>
-  
+
   <!-- Theme color for mobile browsers -->
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
-  
+  <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1A1A1A" media="(prefers-color-scheme: dark)">
+
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
-  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>PK</text></svg>">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
@@ -23,7 +23,7 @@
 <body>
   <!-- Skip to main content (Accessibility) -->
   <a href="#main-content" class="skip-to-content">Skip to main content</a>
-  
+
   <!-- Header / Navigation -->
   <header class="header">
     <nav class="nav">
@@ -31,74 +31,71 @@
         <span class="brand-badge">PK</span>
         <span class="brand-name">Pruthvi Kauticwar</span>
       </a>
-      
+
       <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
-        ☰
+        <span class="nav__toggle-icon"></span>
       </button>
-      
+
       <div class="nav__menu">
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link">Home</a></li>
-          <li><a href="resume.html" class="nav__link">Resume</a></li>
-          <li><a href="projects.html" class="nav__link">Impact</a></li>
+          <li><a href="resume.html" class="nav__link active">Resume</a></li>
           <li><a href="contact.html" class="nav__link">Contact</a></li>
         </ul>
-        <button class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon"></span>
+        </button>
       </div>
     </nav>
   </header>
 
   <!-- Main Content -->
   <main id="main-content">
-    <!-- Resume Section Navigation -->
-    <nav class="resume-section-nav" aria-label="Resume sections">
-      <a href="#professional-summary" class="resume-section-nav__link">
-        <span class="resume-section-nav__text">Summary</span>
-      </a>
-      <a href="#work-experience" class="resume-section-nav__link">
-        <span class="resume-section-nav__text">Experience</span>
-      </a>
-      <a href="#education" class="resume-section-nav__link">
-        <span class="resume-section-nav__text">Education</span>
-      </a>
-      <a href="#skills" class="resume-section-nav__link">
-        <span class="resume-section-nav__text">Skills</span>
-      </a>
-      <a href="#certifications" class="resume-section-nav__link">
-        <span class="resume-section-nav__text">Certifications</span>
-      </a>
-    </nav>
-
-    <!-- Floating Download Button -->
-    <a href="resume-print.html" target="_blank" class="floating-download-btn" aria-label="Download resume as PDF">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      <span>Download Resume</span>
-    </a>
-
     <!-- Resume Content -->
-    <div class="container container-narrow section resume-content">
-      
+    <div class="resume-layout">
+      <!-- Table of Contents - Right Side -->
+      <aside class="resume-toc">
+        <nav class="resume-toc__nav">
+          <span class="resume-toc__label">On this page</span>
+          <ul class="resume-toc__list">
+            <li><a href="#professional-summary" class="resume-toc__link">Summary</a></li>
+            <li><a href="#work-experience" class="resume-toc__link">Experience</a></li>
+            <li><a href="#key-achievements" class="resume-toc__link">Achievements</a></li>
+            <li><a href="#skills" class="resume-toc__link">Skills</a></li>
+            <li><a href="#education" class="resume-toc__link">Education</a></li>
+            <li><a href="#certifications" class="resume-toc__link">Certifications</a></li>
+          </ul>
+          <a href="resume-print.html" target="_blank" class="resume-toc__download">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download PDF
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="resume-main">
+
       <!-- Professional Summary -->
-      <section id="professional-summary" class="resume-section fade-in">
-        <h2 class="resume-section__title">Professional Summary</h2>
+      <section id="professional-summary" class="resume-section">
+        <h1 class="resume-section__title">Professional Summary</h1>
         <p>
           Senior Pega System Architect with 10 years of experience delivering enterprise-scale KYC compliance platforms across leading European banks (ASN Bank, ING, Rabobank, American Express).
         </p>
         <p>
-          Expertise spans Pega platform architecture, real-time data pipelines (Kafka, ETL), Constellation UI, and regulatory compliance (DNB, ECB). 
+          Expertise spans Pega platform architecture, real-time data pipelines (Kafka, ETL), Constellation UI, and regulatory compliance (DNB, ECB).
           Proven track record designing scalable case management solutions, leading production deployments, and mentoring development teams in high-stakes financial environments.
         </p>
       </section>
 
       <!-- Experience -->
-      <section id="work-experience" class="resume-section fade-in">
+      <section id="work-experience" class="resume-section">
         <h2 class="resume-section__title">Work Experience</h2>
         <div class="timeline">
-          
+
           <article class="timeline-item">
             <div class="timeline-item__header">
               <div>
@@ -174,166 +171,176 @@
         </div>
       </section>
 
-      <!-- Education -->
-      <section id="education" class="resume-section fade-in">
-        <h2 class="resume-section__title">Education</h2>
-        <div class="timeline">
-          
-          <article class="timeline-item">
-            <div class="timeline-item__header">
-              <div>
-                <h3 class="timeline-item__title">Bachelor of Technology in Computer Science</h3>
-                <p class="timeline-item__subtitle">SRM University · Chennai, India</p>
-              </div>
-              <span class="timeline-item__date">Graduated 2015</span>
-            </div>
-            <div class="timeline-item__description">
-              <p>Specialized in software engineering and enterprise application development.</p>
-            </div>
+      <!-- Key Achievements -->
+      <section id="key-achievements" class="resume-section">
+        <h2 class="resume-section__title">Key Achievements</h2>
+        <div class="achievements-list">
+
+          <article class="achievement-item">
+            <h3 class="achievement-item__title">Constellation UI Implementation</h3>
+            <p class="achievement-item__description">
+              Delivered production Constellation UI applications at ASN Bank using component-based architecture. Modernized KYC interfaces and contributed to reusable patterns for the platform.
+            </p>
+          </article>
+
+          <article class="achievement-item">
+            <h3 class="achievement-item__title">Data Integration & Streaming Architecture</h3>
+            <p class="achievement-item__description">
+              Built end-to-end data pipelines from Pega through streaming infrastructure to downstream analytics platforms. Supported regulatory reporting, business intelligence, and event-driven workflows.
+            </p>
+          </article>
+
+          <article class="achievement-item">
+            <h3 class="achievement-item__title">Regulatory Compliance Solutions</h3>
+            <p class="achievement-item__description">
+              Built and maintained KYC/CDD solutions aligned with DNB and ECB regulations across multiple Dutch banks. Enhanced Risk Engine and EDR Framework to support regulatory audits and compliance operations.
+            </p>
+          </article>
+
+          <article class="achievement-item">
+            <h3 class="achievement-item__title">Reusable Framework Development</h3>
+            <p class="achievement-item__description">
+              Built enterprise-scale reusable components at Rabobank, reducing delivery timelines and eliminating code duplication across teams.
+            </p>
           </article>
 
         </div>
       </section>
 
       <!-- Skills -->
-      <section id="skills" class="resume-section fade-in">
+      <section id="skills" class="resume-section">
         <h2 class="resume-section__title">Technical Skills</h2>
-        <div class="skills-grid">
-          
-          <div class="skill-category">
-            <h3 class="skill-category__title">Core Pega Expertise</h3>
-            <div class="skill-list">
-              <span class="tag tag-primary">Case Management</span>
-              <span class="tag tag-primary">Constellation UI</span>
-              <span class="tag tag-primary">Flow Design & Routing</span>
-              <span class="tag tag-primary">Data Pages</span>
-              <span class="tag tag-primary">Queue Processors</span>
-              <span class="tag tag-primary">Job Schedulers</span>
-              <span class="tag tag-primary">SLA Management</span>
-              <span class="tag tag-primary">Ruleset Specialization</span>
+        <div class="skills-hierarchy">
+
+          <div class="skill-group">
+            <div class="skill-group__header">
+              <h3 class="skill-group__title">Core Pega</h3>
+              <p class="skill-group__context">End-to-end case lifecycle design and modern UI development.</p>
+            </div>
+            <div class="skill-group__pills">
+              <span class="skill-pill">Case Management</span>
+              <span class="skill-pill">Constellation UI</span>
+              <span class="skill-pill">Flow Design</span>
+              <span class="skill-pill">Data Pages</span>
+              <span class="skill-pill">Queue Processors</span>
+              <span class="skill-pill">Job Schedulers</span>
+              <span class="skill-pill">SLA Management</span>
+              <span class="skill-pill">Ruleset Specialization</span>
             </div>
           </div>
 
-          <div class="skill-category">
-            <h3 class="skill-category__title">KYC & Compliance</h3>
-            <div class="skill-list">
-              <span class="tag tag-primary">Risk Engine</span>
-              <span class="tag tag-primary">EDR Framework</span>
-              <span class="tag tag-primary">Perpetual KYC</span>
-              <span class="tag tag-primary">Customer Outreach</span>
-              <span class="tag tag-primary">DNB Compliance</span>
-              <span class="tag tag-primary">ECB Regulations</span>
+          <div class="skill-group">
+            <div class="skill-group__header">
+              <h3 class="skill-group__title">KYC & Compliance</h3>
+              <p class="skill-group__context">Regulatory solutions for Dutch and European banking requirements.</p>
+            </div>
+            <div class="skill-group__pills">
+              <span class="skill-pill">Risk Engine</span>
+              <span class="skill-pill">EDR Framework</span>
+              <span class="skill-pill">Perpetual KYC</span>
+              <span class="skill-pill">Customer Outreach</span>
+              <span class="skill-pill">DNB Compliance</span>
+              <span class="skill-pill">ECB Regulations</span>
             </div>
           </div>
 
-          <div class="skill-category">
-            <h3 class="skill-category__title">Integrations & Data</h3>
-            <div class="skill-list">
-              <span class="tag tag-primary">Kafka Streaming</span>
-              <span class="tag tag-primary">ETL Pipelines</span>
-              <span class="tag tag-primary">AWS Athena</span>
-              <span class="tag tag-primary">REST/SOAP Services</span>
-              <span class="tag tag-primary">Data Flows</span>
-              <span class="tag tag-primary">Reporting & Analytics</span>
+          <div class="skill-group">
+            <div class="skill-group__header">
+              <h3 class="skill-group__title">Integrations & Data</h3>
+              <p class="skill-group__context">Real-time and batch pipelines for regulatory reporting and analytics.</p>
+            </div>
+            <div class="skill-group__pills">
+              <span class="skill-pill">Kafka Streaming</span>
+              <span class="skill-pill">ETL Pipelines</span>
+              <span class="skill-pill">AWS Athena</span>
+              <span class="skill-pill">REST/SOAP Services</span>
+              <span class="skill-pill">Data Flows</span>
+              <span class="skill-pill">Reporting & Analytics</span>
             </div>
           </div>
 
-          <div class="skill-category">
-            <h3 class="skill-category__title">DevOps & Quality</h3>
-            <div class="skill-list">
-              <span class="tag tag-primary">PDM Deployments</span>
-              <span class="tag tag-primary">Release Management</span>
-              <span class="tag tag-primary">PegaUnit Testing</span>
-              <span class="tag tag-primary">Scenario Testing</span>
-              <span class="tag tag-primary">CI/CD Pipelines</span>
-              <span class="tag tag-primary">Production Support</span>
-              <span class="tag tag-primary">Incident Management</span>
+          <div class="skill-group">
+            <div class="skill-group__header">
+              <h3 class="skill-group__title">DevOps & Quality</h3>
+              <p class="skill-group__context">Production deployments and testing for enterprise banking systems.</p>
+            </div>
+            <div class="skill-group__pills">
+              <span class="skill-pill">PDM Deployments</span>
+              <span class="skill-pill">CI/CD Pipelines</span>
+              <span class="skill-pill">PegaUnit Testing</span>
+              <span class="skill-pill">Release Management</span>
+              <span class="skill-pill">Scenario Testing</span>
+              <span class="skill-pill">Production Support</span>
+              <span class="skill-pill">Incident Management</span>
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="resume-section">
+        <h2 class="resume-section__title">Education</h2>
+        <div class="education-item">
+          <h3 class="education-item__title">Bachelor of Technology in Computer Science</h3>
+          <p class="education-item__subtitle">SRM University · Chennai, India</p>
+          <span class="education-item__date">Graduated 2015</span>
+          <p class="education-item__description">Specialized in software engineering and enterprise application development.</p>
         </div>
       </section>
 
       <!-- Certifications -->
-      <section id="certifications" class="resume-section fade-in">
+      <section id="certifications" class="resume-section">
         <h2 class="resume-section__title">Certifications</h2>
-        <div class="timeline">
-          
-          <article class="timeline-item">
-            <div class="timeline-item__header">
-              <div>
-                <h3 class="timeline-item__title">Constellation Authoring Course</h3>
-                <p class="timeline-item__subtitle">Pegasystems</p>
-              </div>
-              <span class="timeline-item__date">2024</span>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-item__header">
-              <div>
-                <h3 class="timeline-item__title">Pega Certified Business Architect (CPBA)</h3>
-                <p class="timeline-item__subtitle">Pegasystems</p>
-              </div>
-              <span class="timeline-item__date">2020</span>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-item__header">
-              <div>
-                <h3 class="timeline-item__title">Pega Certified Senior System Architect (CSSA)</h3>
-                <p class="timeline-item__subtitle">Pegasystems</p>
-              </div>
-              <span class="timeline-item__date">2018</span>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-item__header">
-              <div>
-                <h3 class="timeline-item__title">Pega Certified System Architect (CSA)</h3>
-                <p class="timeline-item__subtitle">Pegasystems</p>
-              </div>
-              <span class="timeline-item__date">2016</span>
-            </div>
-          </article>
-
+        <div class="certifications-list">
+          <div class="certification-item">
+            <span class="certification-item__title">Constellation Adoption Mission</span>
+            <span class="certification-item__meta">Pegasystems · 2024</span>
+          </div>
+          <div class="certification-item">
+            <span class="certification-item__title">Pega Certified Business Architect (CPBA)</span>
+            <span class="certification-item__meta">Pegasystems · 2020</span>
+          </div>
+          <div class="certification-item">
+            <span class="certification-item__title">Pega Certified Senior System Architect (CSSA)</span>
+            <span class="certification-item__meta">Pegasystems · 2018</span>
+          </div>
+          <div class="certification-item">
+            <span class="certification-item__title">Pega Certified System Architect (CSA)</span>
+            <span class="certification-item__meta">Pegasystems · 2016</span>
+          </div>
         </div>
       </section>
 
-    </div>
+      <!-- Mobile download link (hidden on desktop) -->
+      <div class="resume-download-mobile">
+        <a href="resume-print.html" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download PDF
+        </a>
+      </div>
+
+      </div><!-- /.resume-main -->
+    </div><!-- /.resume-layout -->
   </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__content">
-      <p class="footer__text">
-        © 2026 Pruthvi Kauticwar. All rights reserved. 
-        · <a href="colophon.html" style="color: var(--color-text-tertiary); text-decoration: underline; text-underline-offset: 2px;">How I built this</a>
-      </p>
+      <div class="footer__row">
+        <p class="footer__text">
+          &copy; 2026 Pruthvi Kauticwar
+        </p>
+        <button class="theme-toggle theme-toggle--footer" aria-label="Toggle dark mode">
+          <span class="theme-toggle__icon"></span>
+        </button>
+      </div>
     </div>
   </footer>
-
-  <!-- Mobile Bottom Navigation (iOS Style) -->
-  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
-    <a href="index.html" class="mobile-bottom-nav__link">
-      <span class="mobile-bottom-nav__icon">🏠</span>
-      <span>Home</span>
-    </a>
-    <a href="resume.html" class="mobile-bottom-nav__link active">
-      <span class="mobile-bottom-nav__icon">📄</span>
-      <span>Resume</span>
-    </a>
-    <a href="projects.html" class="mobile-bottom-nav__link">
-      <span class="mobile-bottom-nav__icon">💼</span>
-      <span>Impact</span>
-    </a>
-    <a href="contact.html" class="mobile-bottom-nav__link">
-      <span class="mobile-bottom-nav__icon">✉️</span>
-      <span>Contact</span>
-    </a>
-  </nav>
 
   <!-- JavaScript -->
   <script src="js/main.js"></script>

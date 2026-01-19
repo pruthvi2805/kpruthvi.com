@@ -44,4 +44,4 @@ build/
 
 # Temporary files
 *.tmp
-.cache/
+.cache/.claude/

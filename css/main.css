@@ -1,28 +1,28 @@
 /* ============================================
-   APPLE-INSPIRED DESIGN SYSTEM
-   Built with purpose, crafted with care
+   WARM NEUTRAL + INK DESIGN SYSTEM
+   Editorial aesthetic for professional credibility
    ============================================ */
 
 :root {
-  /* Apple Color Palette - Light Mode */
-  --color-primary: #0071e3;
-  --color-primary-dark: #0077ED;
-  --color-primary-light: #2997FF;
-  
-  --color-bg: #ffffff;
-  --color-bg-secondary: #fbfbfd;
-  --color-bg-tertiary: #f5f5f7;
-  --color-bg-elevated: rgba(255, 255, 255, 0.72);
-  
-  --color-text: #1d1d1f;
-  --color-text-secondary: #86868b;
-  --color-text-tertiary: #86868b;
-  
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-border-hover: rgba(0, 0, 0, 0.15);
-  
-  --color-shadow: rgba(0, 0, 0, 0.08);
-  --color-shadow-elevated: rgba(0, 0, 0, 0.12);
+  /* Warm Terracotta Color Palette - Light Mode */
+  --color-primary: #C17B5F;
+  --color-primary-dark: #A66248;
+  --color-primary-light: #D4967D;
+
+  --color-bg: #FAFAF8;
+  --color-bg-secondary: #F5F5F3;
+  --color-bg-tertiary: #EEEEE9;
+  --color-bg-elevated: #FFFFFF;
+
+  --color-text: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-tertiary: #888888;
+
+  --color-border: #E8E6E3;
+  --color-border-hover: #D8D6D3;
+
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-shadow-elevated: rgba(0, 0, 0, 0.1);
   
   /* Typography - San Francisco Inspired */
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -121,24 +121,24 @@
   --z-modal: 1050;
 }
 
-/* Dark Mode - True Apple Black */
+/* Dark Mode - Warm Black */
 [data-theme="dark"] {
-  --color-primary: #2997FF;
-  --color-primary-dark: #0A84FF;
-  --color-primary-light: #5EB3FF;
-  
-  --color-bg: #000000;
-  --color-bg-secondary: #1c1c1e;
-  --color-bg-tertiary: #2c2c2e;
-  --color-bg-elevated: rgba(28, 28, 30, 0.72);
-  
-  --color-text: #f5f5f7;
-  --color-text-secondary: #a1a1a6;
-  --color-text-tertiary: #86868b;
-  
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(255, 255, 255, 0.15);
-  
+  --color-primary: #D4967D;
+  --color-primary-dark: #C17B5F;
+  --color-primary-light: #E5B09A;
+
+  --color-bg: #1A1A1A;
+  --color-bg-secondary: #222222;
+  --color-bg-tertiary: #2A2A2A;
+  --color-bg-elevated: #252525;
+
+  --color-text: #F5F4F2;
+  --color-text-secondary: #A0A0A0;
+  --color-text-tertiary: #777777;
+
+  --color-border: #333333;
+  --color-border-hover: #444444;
+
   --color-shadow: rgba(0, 0, 0, 0.3);
   --color-shadow-elevated: rgba(0, 0, 0, 0.5);
 }
@@ -242,7 +242,7 @@ img {
 }
 
 /* ============================================
-   GLASSMORPHIC NAVIGATION
+   SOLID HEADER NAVIGATION
    ============================================ */
 
 .header {
@@ -251,12 +251,10 @@ img {
   left: 0;
   right: 0;
   height: var(--header-height);
-  background-color: var(--color-bg-elevated);
-  backdrop-filter: saturate(180%) blur(var(--blur-md));
-  -webkit-backdrop-filter: saturate(180%) blur(var(--blur-md));
+  background-color: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   z-index: var(--z-fixed);
-  transition: all 0.5s var(--ease-out);
+  transition: background-color 0.3s var(--ease-out);
 }
 
 .nav {
@@ -287,16 +285,28 @@ img {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: white;
   font-size: 14px;
   font-weight: var(--font-weight-bold);
   border-radius: 50%;
   letter-spacing: 0.5px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(193, 123, 95, 0.25);
+}
+
+.nav__brand:hover .brand-badge {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(193, 123, 95, 0.35);
 }
 
 [data-theme="dark"] .brand-badge {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 2px 8px rgba(212, 150, 125, 0.2);
+}
+
+[data-theme="dark"] .nav__brand:hover .brand-badge {
+  box-shadow: 0 4px 12px rgba(212, 150, 125, 0.3);
 }
 
 .brand-name {
@@ -327,25 +337,35 @@ img {
   padding: var(--space-4) 0;
 }
 
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width var(--transition-fast);
+}
+
 .nav__link:hover {
   color: var(--color-text);
 }
 
+.nav__link:hover::after {
+  width: 100%;
+}
+
 .nav__link.active {
-  color: var(--color-text);
+  color: var(--color-primary);
 }
 
 .nav__link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background-color: var(--color-text);
+  width: 100%;
+  background-color: var(--color-primary);
 }
 
-/* Theme Toggle - Minimal Icon Style */
+/* Theme Toggle - CSS Icon Style */
 .theme-toggle {
   background: none;
   border: none;
@@ -356,7 +376,6 @@ img {
   justify-content: center;
   color: var(--color-text-secondary);
   transition: all var(--transition-fast);
-  font-size: var(--font-size-lg);
   border-radius: var(--radius-full);
   width: 32px;
   height: 32px;
@@ -365,135 +384,167 @@ img {
 .theme-toggle:hover {
   color: var(--color-text);
   background-color: var(--color-bg-tertiary);
-  transform: scale(1.05);
 }
 
-.theme-toggle:active {
-  transform: scale(0.95);
+.theme-toggle__icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  position: relative;
 }
 
-/* Mobile Menu Toggle */
+/* Sun icon in light mode */
+.theme-toggle__icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Moon icon in dark mode */
+[data-theme="dark"] .theme-toggle__icon {
+  background: transparent;
+}
+
+[data-theme="dark"] .theme-toggle__icon::before {
+  width: 14px;
+  height: 14px;
+  background: var(--color-bg);
+  top: -2px;
+  left: 6px;
+  transform: none;
+}
+
+/* Mobile Menu Toggle - Hamburger Icon */
 .nav__toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: var(--space-8);
-  color: var(--color-text);
-  font-size: var(--font-size-2xl);
+  width: 40px;
+  height: 40px;
+  position: relative;
   transition: opacity var(--transition-fast);
+}
+
+.nav__toggle-icon,
+.nav__toggle-icon::before,
+.nav__toggle-icon::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--color-text);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s var(--ease-out);
+}
+
+.nav__toggle-icon {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav__toggle-icon::before {
+  content: '';
+  top: -6px;
+}
+
+.nav__toggle-icon::after {
+  content: '';
+  top: 6px;
+}
+
+/* Transform to X when menu is open */
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon {
+  background-color: transparent;
+}
+
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon::before {
+  top: 0;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.nav__toggle[aria-expanded="true"] .nav__toggle-icon::after {
+  top: 0;
+  transform: translateX(-50%) rotate(-45deg);
 }
 
 .nav__toggle:hover {
   opacity: 0.7;
 }
 
-.nav__toggle:active {
-  opacity: 0.5;
-}
-
-/* Mobile Navigation - Bottom Tab Bar (iOS Style) */
+/* Mobile Navigation - Hamburger Menu */
 @media (max-width: 768px) {
-  /* Hide header completely on mobile - navigation is in bottom bar */
   .header {
+    height: 44px;
+  }
+
+  .nav {
+    padding: 0 var(--space-16);
+  }
+
+  /* Hide full name on mobile, show only badge */
+  .brand-name {
     display: none;
   }
-  
-  main {
-    padding-top: 0;
+
+  /* Show hamburger toggle on mobile */
+  .nav__toggle {
+    display: flex;
   }
-  
-  /* Add top padding for pages with sticky navigation */
-  .resume-content {
-    padding-top: var(--space-20);
-  }
-  
-  /* Hide desktop menu */
+
+  /* Hide desktop menu by default on mobile */
   .nav__menu {
-    display: none;
-  }
-  
-  /* Show theme toggle on mobile */
-  .theme-toggle {
-    display: flex;
-  }
-}
-
-/* Bottom Tab Bar Navigation - Mobile Only */
-.mobile-bottom-nav {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobile-bottom-nav {
-    display: flex;
     position: fixed;
-    bottom: 0;
+    top: 44px;
     left: 0;
     right: 0;
-    height: 68px;
-    background-color: #ffffff;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 var(--space-4);
-    padding-bottom: env(safe-area-inset-bottom);
-    z-index: 9999;
-  }
-  
-  [data-theme="dark"] .mobile-bottom-nav {
-    background-color: #000000;
-    border-top-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .mobile-bottom-nav__link {
-    flex: 1;
-    display: flex;
+    bottom: 0;
+    background-color: var(--color-bg);
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-10) var(--space-8);
-    min-height: 56px;
-    text-decoration: none;
-    color: #8e8e93;
-    font-size: 10px;
-    font-weight: var(--font-weight-regular);
-    transition: color 0.2s ease;
-    letter-spacing: 0.02em;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    user-select: none;
+    padding: var(--space-32) var(--space-24);
+    transform: translateX(100%);
+    transition: transform 0.3s var(--ease-out);
+    z-index: var(--z-modal);
   }
-  
-  /* Hide emoji icons on mobile nav - text only is cleaner */
-  .mobile-bottom-nav__icon {
+
+  .nav__menu.active {
+    transform: translateX(0);
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-24);
+  }
+
+  .nav__link {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Adjust main padding for smaller header */
+  main {
+    padding-top: 44px;
+  }
+
+  /* Hide theme toggle in header on mobile - it's in the footer */
+  .header .theme-toggle,
+  .nav__menu .theme-toggle {
     display: none;
   }
-  
-  .mobile-bottom-nav__link.active {
-    color: #636366;
-    font-weight: var(--font-weight-medium);
-  }
-  
-  [data-theme="dark"] .mobile-bottom-nav__link {
-    color: #8e8e93;
-  }
-  
-  [data-theme="dark"] .mobile-bottom-nav__link.active {
-    color: #aeaeb2;
-    font-weight: var(--font-weight-medium);
-  }
-  
-  /* Add bottom padding to main content - accounts for safe area */
-  main {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom));
-  }
-  
-  /* Ensure footer clears bottom nav */
-  .footer {
-    margin-bottom: 0;
-  }
+}
+
+/* Hide bottom nav entirely - no longer used */
+.mobile-bottom-nav {
+  display: none;
 }
 
 /* ============================================
@@ -625,99 +676,8 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-/* Scroll Animations - Apple Style (Faster) */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger animation delay for sequential reveals */
-.fade-in:nth-child(1) { transition-delay: 0.03s; }
-.fade-in:nth-child(2) { transition-delay: 0.06s; }
-.fade-in:nth-child(3) { transition-delay: 0.09s; }
-.fade-in:nth-child(4) { transition-delay: 0.12s; }
-.fade-in:nth-child(5) { transition-delay: 0.15s; }
-
-/* ============================================
-   SCROLL MORE INDICATOR (Right Side)
-   ============================================ */
-
-.scroll-more-indicator {
-  position: fixed;
-  right: var(--space-32);
-  bottom: var(--space-64);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-8);
-  opacity: 0;
-  transition: opacity var(--transition-base);
-  pointer-events: none;
-  z-index: 99;
-}
-
-.scroll-more-indicator.visible {
-  opacity: 1;
-}
-
-.scroll-more-indicator__icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-primary);
-  font-size: var(--font-size-2xl);
-  background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-full);
-  border: 2px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-  animation: bounceVertical 2s ease-in-out infinite;
-}
-
-@keyframes bounceVertical {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(8px);
-  }
-  60% {
-    transform: translateY(4px);
-  }
-}
-
-/* Hide on mobile */
-@media (max-width: 768px) {
-  .scroll-more-indicator {
-    display: none;
-  }
-}
-
-/* ============================================
-   PAGE LOAD ANIMATION
-   ============================================ */
-
-body {
-  opacity: 0;
-  animation: pageLoad 0.4s var(--ease-out) forwards;
-}
-
-@keyframes pageLoad {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Prevent animation on subsequent navigations */
+/* Body loaded state */
 body.loaded {
-  animation: none;
   opacity: 1;
 }
 

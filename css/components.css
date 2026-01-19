@@ -173,31 +173,29 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-6) var(--space-16);
-  background-color: var(--color-bg-secondary);
+  padding: var(--space-4) var(--space-12);
+  background-color: rgba(193, 123, 95, 0.1);
   color: var(--color-text-secondary);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
-  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  border: none;
   transition: all var(--transition-fast);
 }
 
 .tag:hover {
-  background-color: var(--color-bg-tertiary);
-  transform: translateY(-1px);
+  background-color: rgba(193, 123, 95, 0.18);
+  color: var(--color-primary-dark);
 }
 
-.tag-primary {
-  background-color: rgba(0, 113, 227, 0.1);
-  color: var(--color-primary);
-  border-color: rgba(0, 113, 227, 0.2);
+[data-theme="dark"] .tag {
+  background-color: rgba(212, 150, 125, 0.15);
+  color: var(--color-text-secondary);
 }
 
-[data-theme="dark"] .tag-primary {
-  background-color: rgba(41, 151, 255, 0.15);
+[data-theme="dark"] .tag:hover {
+  background-color: rgba(212, 150, 125, 0.25);
   color: var(--color-primary);
-  border-color: rgba(41, 151, 255, 0.25);
 }
 
 /* ============================================
@@ -397,11 +395,11 @@
 
 .alert-info {
   border-color: var(--color-primary);
-  background-color: rgba(0, 113, 227, 0.05);
+  background-color: rgba(193, 123, 95, 0.08);
 }
 
 [data-theme="dark"] .alert-info {
-  background-color: rgba(41, 151, 255, 0.08);
+  background-color: rgba(212, 150, 125, 0.1);
 }
 
 .alert p {
