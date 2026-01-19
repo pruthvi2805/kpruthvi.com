@@ -1,9 +1,8 @@
 /**
  * Cloudflare Worker for Contact Form
- * Handles form submissions with Turnstile verification and email sending
+ * Handles form submissions with Turnstile verification and email sending via Resend
  */
 
-// Secrets are stored as environment variables in Cloudflare Worker settings
 const TO_EMAIL = 'me@kpruthvi.com';
 const FROM_EMAIL = 'noreply@kpruthvi.com';
 
@@ -40,8 +39,8 @@ export default {
         return jsonResponse({ error: 'Spam protection check failed. Please try again.' }, 400);
       }
 
-      // Send email via MailChannels
-      const emailSent = await sendEmail(name, email, message);
+      // Send email via Resend
+      const emailSent = await sendEmail(name, email, message, env);
       if (!emailSent) {
         return jsonResponse({ error: 'Failed to send email. Please try again later.' }, 500);
       }
@@ -77,30 +76,20 @@ async function verifyTurnstile(token, request, env) {
   }
 }
 
-async function sendEmail(name, email, message) {
-  const emailContent = {
-    personalizations: [
-      {
-        to: [{ email: TO_EMAIL, name: 'Pruthvi Kauticwar' }],
+async function sendEmail(name, email, message, env) {
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: `Portfolio Contact <${FROM_EMAIL}>`,
+        to: [TO_EMAIL],
+        reply_to: email,
         subject: `Portfolio Contact: ${name}`,
-      },
-    ],
-    from: {
-      email: FROM_EMAIL,
-      name: 'Portfolio Contact Form',
-    },
-    reply_to: {
-      email: email,
-      name: name,
-    },
-    content: [
-      {
-        type: 'text/plain',
-        value: `New contact form submission:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      },
-      {
-        type: 'text/html',
-        value: `
+        html: `
           <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #007aff; margin-bottom: 24px;">New Contact Form Submission</h2>
             <div style="background: #f5f5f7; border-radius: 12px; padding: 20px; margin-bottom: 16px;">
@@ -113,15 +102,7 @@ async function sendEmail(name, email, message) {
             </div>
           </div>
         `,
-      },
-    ],
-  };
-
-  try {
-    const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(emailContent),
+      }),
     });
 
     return response.ok;
