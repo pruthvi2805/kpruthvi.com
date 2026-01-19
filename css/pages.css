@@ -303,14 +303,22 @@
 
 @media (max-width: 768px) {
   .resume-section-nav {
-    padding: 0 var(--space-16);
-    gap: var(--space-4);
+    padding: var(--space-8) var(--space-16);
+    gap: var(--space-8);
     justify-content: flex-start;
+    background-color: var(--color-bg-secondary);
+    border-bottom: 2px solid var(--color-border);
   }
   
   .resume-section-nav__link {
-    padding: var(--space-12) var(--space-16);
-    font-size: var(--font-size-xs);
+    padding: var(--space-14) var(--space-16);
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    border-bottom-width: 3px;
+  }
+  
+  .resume-section-nav__link.active {
+    font-weight: var(--font-weight-bold);
   }
 }
 
