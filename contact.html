@@ -50,70 +50,55 @@
 
   <!-- Main Content -->
   <main id="main-content">
-    <div class="contact-page-section">
+    <section class="contact-section">
       <div class="container">
-        <div class="contact-split-layout fade-in">
+        <div class="contact-layout fade-in">
           
-          <!-- Left Side - Contact Info -->
+          <!-- Left: Info -->
           <div class="contact-info">
-            <h1 class="contact-info__title">Get in Touch</h1>
-            <p class="contact-info__subtitle">I'd like to hear from you!</p>
-            
-            <p class="contact-info__description">
+            <h1>Get in Touch</h1>
+            <p class="contact-description">
               Open to senior Pega architecture roles, consulting engagements, and technical discussions. Let's connect and explore opportunities together.
             </p>
-
-            <div class="contact-details">
-              <div class="contact-detail-item">
-                <span class="contact-detail-icon">✉️</span>
-                <a href="mailto:me@kpruthvi.com">me@kpruthvi.com</a>
-              </div>
-              <div class="contact-detail-item">
-                <span class="contact-detail-icon">📍</span>
-                <span>Utrecht, Netherlands</span>
-              </div>
-            </div>
-
-            <div class="contact-social-links">
-              <a href="https://nl.linkedin.com/in/pruthvikauticwar" target="_blank" rel="noopener noreferrer" class="contact-social-icon" aria-label="LinkedIn">
-                <span class="social-icon-emoji">💼</span>
-                <span class="social-link-text">LinkedIn</span>
-              </a>
-              <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="contact-social-icon" aria-label="GitHub">
-                <span class="social-icon-emoji">💻</span>
-                <span class="social-link-text">GitHub</span>
-              </a>
+            
+            <div class="contact-meta">
+              <p><a href="mailto:me@kpruthvi.com" class="contact-link">me@kpruthvi.com</a></p>
+              <p>Utrecht, Netherlands</p>
+              <p>
+                <a href="https://nl.linkedin.com/in/pruthvikauticwar" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+                ·
+                <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+              </p>
             </div>
           </div>
 
-          <!-- Right Side - Contact Form -->
-          <div class="contact-form-wrapper">
+          <!-- Right: Form -->
+          <div class="contact-form-card">
             <form class="contact-form" id="contact-form">
               <div class="form-row">
-                <div class="form-group">
-                  <label for="firstName">First Name</label>
-                  <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                <div class="form-field">
+                  <label for="firstName">First name</label>
+                  <input type="text" id="firstName" name="firstName" required>
                 </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                <div class="form-field">
+                  <label for="lastName">Last name</label>
+                  <input type="text" id="lastName" name="lastName" required>
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-field">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
               </div>
 
-              <div class="form-group">
+              <div class="form-field">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" rows="6" placeholder="Your message here..." required></textarea>
+                <textarea id="message" name="message" placeholder="Tell me about the opportunity or what you'd like to discuss..." required></textarea>
               </div>
 
-              <!-- Turnstile CAPTCHA -->
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAACNQMxBxxzSL2_0t" data-theme="auto" data-size="normal" data-refresh-expired="auto"></div>
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACNQMxBxxzSL2_0t" data-theme="auto"></div>
 
-              <button type="submit" class="btn btn-primary contact-submit">Send Message</button>
+              <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
               
               <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
             </form>
@@ -121,7 +106,7 @@
 
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Footer -->
