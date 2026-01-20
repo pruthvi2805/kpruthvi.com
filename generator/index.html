@@ -51,8 +51,8 @@
     <!-- Generator Form -->
     <form id="portfolio-form" class="generator-form" novalidate>
 
-      <!-- Theme Selection (First!) -->
-      <section class="form-section form-section--theme">
+      <!-- Basic Info Section (with Theme Picker) -->
+      <section class="form-section" id="theme-section">
         <div class="theme-picker">
           <span class="theme-picker__label">Theme</span>
           <div class="theme-pills" role="radiogroup" aria-label="Select a theme">
@@ -78,10 +78,6 @@
             </label>
           </div>
         </div>
-      </section>
-
-      <!-- Basic Info Section -->
-      <section class="form-section">
         <h2 class="form-section__title">Basic Info</h2>
         <div class="form-grid">
           <div class="form-field">
@@ -215,7 +211,7 @@
         </div>
         <p class="form-actions__theme-reminder">
           Theme: <span id="selected-theme-name">Minimal</span>
-          <a href="#portfolio-form" class="change-theme-link">Change</a>
+          <a href="#theme-section" class="change-theme-link">Change</a>
         </p>
         <p class="form-actions__hint">Preview your portfolio first, then download when ready.</p>
       </div>
