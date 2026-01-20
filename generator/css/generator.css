@@ -526,6 +526,7 @@ a:hover {
   margin-bottom: 28px;
   padding-bottom: 28px;
   border-bottom: 1px solid #e8e6e3;
+  scroll-margin-top: 24px;
 }
 
 [data-theme="dark"] .theme-field {
@@ -571,13 +572,41 @@ a:hover {
   pointer-events: none;
 }
 
-.theme-btn:has(input:checked) {
-  border-color: var(--color-primary);
+/* Each theme button uses its own accent color when selected */
+.theme-btn[data-theme="minimal-light"]:has(input:checked) {
+  border-color: #666666;
+  background: rgba(102, 102, 102, 0.08);
+}
+
+.theme-btn[data-theme="forest"]:has(input:checked) {
+  border-color: #5B8A72;
+  background: rgba(91, 138, 114, 0.08);
+}
+
+.theme-btn[data-theme="warm"]:has(input:checked) {
+  border-color: #C17B5F;
   background: rgba(193, 123, 95, 0.08);
 }
 
-[data-theme="dark"] .theme-btn:has(input:checked) {
-  background: rgba(212, 150, 125, 0.1);
+.theme-btn[data-theme="cool"]:has(input:checked) {
+  border-color: #4A7C9B;
+  background: rgba(74, 124, 155, 0.08);
+}
+
+[data-theme="dark"] .theme-btn[data-theme="minimal-light"]:has(input:checked) {
+  background: rgba(102, 102, 102, 0.15);
+}
+
+[data-theme="dark"] .theme-btn[data-theme="forest"]:has(input:checked) {
+  background: rgba(91, 138, 114, 0.15);
+}
+
+[data-theme="dark"] .theme-btn[data-theme="warm"]:has(input:checked) {
+  background: rgba(193, 123, 95, 0.15);
+}
+
+[data-theme="dark"] .theme-btn[data-theme="cool"]:has(input:checked) {
+  background: rgba(74, 124, 155, 0.15);
 }
 
 .theme-btn__dot {
