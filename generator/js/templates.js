@@ -1034,6 +1034,6 @@ portfolio/
 
 ---
 
-Generated with [Portfolio Generator](https://github.com/pruthvi2805)
+Generated with [Portfolio Generator](https://kpruthvi.com/generator/)
 `;
 }

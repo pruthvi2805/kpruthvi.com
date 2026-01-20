@@ -11,22 +11,45 @@ A quick reference for updating your portfolio content.
 | `portfolio/index.html` | Home page - intro text, tagline |
 | `portfolio/resume.html` | Resume - jobs, skills, education, certifications |
 | `portfolio/contact.html` | Contact page - description, email, social links |
+| `index.html` | Hub page - intro, project cards |
+| `contact.html` | Hub contact page |
 
 ---
 
-## Home Page (`index.html`)
+## Hub Page (`index.html`)
 
 ### Update intro text
 
-Find this section :
+Find this section:
+
+```html
+<p class="hero__bio">
+  Engineer by day, tinkerer by night...
+</p>
+```
+
+Edit the text inside the `<p>` tags.
+
+### Update role
+
+Find this line:
+
+```html
+<span class="tag">Pega Architect</span> // building with intention
+```
+
+---
+
+## Portfolio Home Page (`portfolio/index.html`)
+
+### Update intro text
+
+Find this section:
 
 ```html
 <div class="home__intro">
   <p>
-    I enjoy a good challenge. Mostly banks so far, but always curious about what's next.
-  </p>
-  <p>
-    Based in Utrecht, Netherlands. Originally from India.
+    I enjoy a good challenge...
   </p>
 </div>
 ```
@@ -35,7 +58,7 @@ Edit the text inside the `<p>` tags.
 
 ### Update job title
 
-Find this line :
+Find this line:
 
 ```html
 <p class="home__role">Senior Pega System Architect</p>
@@ -43,11 +66,11 @@ Find this line :
 
 ---
 
-## Resume Page (`resume.html`)
+## Resume Page (`portfolio/resume.html`)
 
 ### Add a new job
 
-Find the `<div class="timeline">` section . Copy this template and paste it **at the top** (newest job first):
+Find the `<div class="timeline">` section. Copy this template and paste it **at the top** (newest job first):
 
 ```html
 <article class="timeline-item">
@@ -76,7 +99,7 @@ Find the job by searching for the company name. Edit the text directly.
 
 ### Update professional summary
 
-Find this section :
+Find this section:
 
 ```html
 <section id="professional-summary" class="resume-section">
@@ -91,7 +114,7 @@ Find this section :
 
 ### Add a new skill
 
-Find the relevant skill group in the `<section id="skills">` section .
+Find the relevant skill group in the `<section id="skills">` section.
 
 Add a new skill pill inside the `<div class="skill-group__pills">`:
 
@@ -121,7 +144,7 @@ Copy this template and paste it inside the `<div class="skills-hierarchy">`:
 
 ### Add a new certification
 
-Find `<section id="certifications">` . Add inside `<div class="certifications-list">`:
+Find `<section id="certifications">`. Add inside `<div class="certifications-list">`:
 
 ```html
 <div class="certification-item">
@@ -134,7 +157,7 @@ Find `<section id="certifications">` . Add inside `<div class="certifications-li
 
 ### Update education
 
-Find `<section id="education">` . Edit the text directly:
+Find `<section id="education">`. Edit the text directly:
 
 ```html
 <div class="education-item">
@@ -147,11 +170,11 @@ Find `<section id="education">` . Edit the text directly:
 
 ---
 
-## Contact Page (`contact.html`)
+## Contact Page (`portfolio/contact.html`)
 
 ### Update description
 
-Find this section :
+Find this section:
 
 ```html
 <p class="contact-description">
@@ -161,7 +184,7 @@ Find this section :
 
 ### Update email
 
-Find :
+Find:
 
 ```html
 <p><a href="mailto:me@kpruthvi.com" class="contact-link">me@kpruthvi.com</a></p>
@@ -171,7 +194,7 @@ Update both the `href="mailto:..."` and the visible text.
 
 ### Update location
 
-Find :
+Find:
 
 ```html
 <p>Utrecht, Netherlands</p>

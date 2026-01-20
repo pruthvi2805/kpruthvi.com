@@ -1,8 +1,62 @@
-# Portfolio
+# kpruthvi.com
 
-Personal portfolio website for a senior Pega System Architect, focused on architecture, delivery quality, and practical systems design.
+Personal hub site with portfolio showcase and interactive tools.
 
-Built with vanilla HTML, CSS, and JavaScript to keep the stack simple, transparent, and dependency-free.
+Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools.
+
+---
+
+## Live Site
+
+👉 **https://kpruthvi.com**
+
+---
+
+## Structure
+
+```
+kpruthvi.com/
+├── index.html              ← Hub (terminal-themed landing page)
+├── contact.html            ← Hub contact page
+├── portfolio/              ← Personal portfolio
+│   ├── index.html          ← Portfolio home
+│   ├── resume.html         ← Resume/CV
+│   ├── contact.html        ← Portfolio contact
+│   ├── css/
+│   └── js/
+├── generator/              ← Portfolio Generator tool
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   └── libs/
+├── worker.js               ← Cloudflare Worker (contact form)
+└── docs/
+    ├── EDITING-GUIDE.md    ← How to update content
+    └── PROJECT-SPEC.md     ← Project specification
+```
+
+---
+
+## Features
+
+### Hub
+- Terminal-themed design (JetBrains Mono, dark-first)
+- Project showcase with links
+- Scroll indicator for discoverability
+- Dark/light mode toggle
+
+### Portfolio
+- Responsive design (desktop + mobile)
+- Contact form with Cloudflare Worker + Resend
+- Web resume with section navigation
+- SEO setup (sitemap, meta tags, robots.txt)
+
+### Portfolio Generator
+- Fill form with your details
+- Pick from 4 theme presets
+- Preview before downloading
+- Download ready-to-host ZIP file
+- Includes GitHub Pages hosting guide
 
 ---
 
@@ -13,90 +67,30 @@ Built with vanilla HTML, CSS, and JavaScript to keep the stack simple, transpare
 - Cloudflare Workers (contact form backend)
 - Resend (email delivery)
 - Cloudflare Turnstile (spam protection)
-
----
-
-## Features
-
-- Responsive design (desktop and mobile)
-- Contact form backed by a Cloudflare Worker with Resend email delivery
-- Static, downloadable resume PDF
-- Web resume with section navigation
-- Basic SEO setup (sitemap, meta tags, robots.txt)
-
----
-
-## Project Structure
-
-```
-├── index.html              # landing page
-├── resume.html             # web resume with section navigation
-├── resume-print.html       # print-friendly resume
-├── contact.html            # contact form
-├── worker.js               # Cloudflare Worker (Turnstile + Resend)
-├── sitemap.xml
-├── robots.txt
-├── css/
-│   ├── main.css            # global styles, header, navigation
-│   ├── components.css      # buttons, cards, tags
-│   └── pages.css           # page-specific layouts
-└── js/
-    └── main.js             # navigation, scrolling, form handling
-```
+- JSZip + FileSaver.js (generator ZIP creation)
 
 ---
 
 ## Local Development
 
-You can open `index.html` directly in a browser, or run a simple local server:
+Open any HTML file directly in a browser, or run a local server:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then visit:
-
-```
-http://localhost:8000
-```
+Then visit `http://localhost:8000`
 
 ---
 
-## Design Notes
+## Deployment
 
-No frontend frameworks or build tools were used intentionally.
-
-The goal was clarity, stability, and ease of maintenance over abstraction.
-
-Secrets (API keys, tokens) are stored as environment variables in Cloudflare and are not committed to the repository.
-
----
-
-## Live Site
-
-Hosted on Cloudflare Pages:  
-👉 https://kpruthvi.com
-
----
-
-## Customization
-
-Theme variables are defined in `css/main.css`:
-
-```css
-:root {
-  /* Warm Terracotta Color Palette */
-  --color-primary: #C17B5F;
-  --color-bg: #FAFAF8;
-  --color-text: #1A1A1A;
-}
-```
+Push to `main` branch → Cloudflare Pages auto-deploys
 
 ---
 
 ## License
 
-MIT License  
-Feel free to use this as a starting point for your own portfolio.
+MIT License — feel free to use as a starting point for your own site.
 
 Built by Pruthvi Kauticwar, 2026

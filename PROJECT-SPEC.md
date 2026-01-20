@@ -67,8 +67,9 @@ kpruthvi.com/
 ```
 
 ### Design Notes
+- Terminal-themed aesthetic (JetBrains Mono, dark-first)
 - Minimal navigation (no full nav bar needed)
-- Warm, consistent with portfolio aesthetic
+- Scroll indicator for discoverability
 - Responsive (mobile-first)
 - Dark/light mode toggle
 
@@ -193,13 +194,15 @@ Kept simple - no command line required, all via GitHub web UI.
 
 ## Phases
 
-### Phase 1 (Current)
+### Phase 1 (Complete)
 - [x] Restructure site (portfolio to /portfolio)
-- [ ] Build hub page
-- [ ] Build generator (single-page output)
-- [ ] 4 theme presets
-- [ ] Download ZIP functionality
-- [ ] Hosting guide
+- [x] Build hub page (terminal-themed)
+- [x] Build generator (single-page output)
+- [x] 4 theme presets
+- [x] Download ZIP functionality
+- [x] Hosting guide (included in generated README)
+- [x] Preview functionality
+- [x] Hub contact page
 
 ### Phase 2 (Future)
 - [ ] Multi-page portfolio option (home, resume, contact)
