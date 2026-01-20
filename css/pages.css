@@ -1344,6 +1344,7 @@ main:has(.resume-layout)::after {
   flex-direction: row;
   gap: 16px;
   margin-top: 6px;
+  margin-left: -4px;
 }
 
 .contact-social-link {
@@ -1752,8 +1753,8 @@ main:has(.resume-layout)::after {
 }
 
 .theme-toggle--footer:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
 }
 
 /* ============================================
