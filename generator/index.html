@@ -53,76 +53,36 @@
 
       <!-- Theme Selection (First!) -->
       <section class="form-section form-section--theme">
-        <h2 class="form-section__title">1. Choose a Theme</h2>
-        <p class="form-section__hint">This will style your generated portfolio.</p>
-        <div class="theme-selector" role="radiogroup" aria-label="Select a theme">
-
-          <label class="theme-card" data-theme="minimal-light">
-            <input type="radio" name="theme" value="minimal-light" checked>
-            <div class="theme-card__preview">
-              <div class="theme-card__swatch theme-card__swatch--bg" style="background: #FAFAFA;"></div>
-              <div class="theme-card__swatch theme-card__swatch--text" style="background: #1A1A1A;"></div>
-              <div class="theme-card__swatch theme-card__swatch--accent" style="background: #666666;"></div>
-            </div>
-            <span class="theme-card__name">Minimal Light</span>
-            <span class="theme-card__check">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          </label>
-
-          <label class="theme-card" data-theme="forest">
-            <input type="radio" name="theme" value="forest">
-            <div class="theme-card__preview">
-              <div class="theme-card__swatch theme-card__swatch--bg" style="background: #F9FAF9;"></div>
-              <div class="theme-card__swatch theme-card__swatch--text" style="background: #1A1D1B;"></div>
-              <div class="theme-card__swatch theme-card__swatch--accent" style="background: #5B8A72;"></div>
-            </div>
-            <span class="theme-card__name">Forest Green</span>
-            <span class="theme-card__check">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          </label>
-
-          <label class="theme-card" data-theme="warm">
-            <input type="radio" name="theme" value="warm">
-            <div class="theme-card__preview">
-              <div class="theme-card__swatch theme-card__swatch--bg" style="background: #FAFAF8;"></div>
-              <div class="theme-card__swatch theme-card__swatch--text" style="background: #1A1A1A;"></div>
-              <div class="theme-card__swatch theme-card__swatch--accent" style="background: #C17B5F;"></div>
-            </div>
-            <span class="theme-card__name">Warm Terracotta</span>
-            <span class="theme-card__check">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          </label>
-
-          <label class="theme-card" data-theme="cool">
-            <input type="radio" name="theme" value="cool">
-            <div class="theme-card__preview">
-              <div class="theme-card__swatch theme-card__swatch--bg" style="background: #F8FAFB;"></div>
-              <div class="theme-card__swatch theme-card__swatch--text" style="background: #1A1D21;"></div>
-              <div class="theme-card__swatch theme-card__swatch--accent" style="background: #4A7C9B;"></div>
-            </div>
-            <span class="theme-card__name">Cool Blue</span>
-            <span class="theme-card__check">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-          </label>
-
+        <div class="theme-picker">
+          <span class="theme-picker__label">Theme</span>
+          <div class="theme-pills" role="radiogroup" aria-label="Select a theme">
+            <label class="theme-pill" data-theme="minimal-light">
+              <input type="radio" name="theme" value="minimal-light" checked>
+              <span class="theme-pill__dot" style="background: #666666;"></span>
+              <span class="theme-pill__name">Minimal</span>
+            </label>
+            <label class="theme-pill" data-theme="forest">
+              <input type="radio" name="theme" value="forest">
+              <span class="theme-pill__dot" style="background: #5B8A72;"></span>
+              <span class="theme-pill__name">Forest</span>
+            </label>
+            <label class="theme-pill" data-theme="warm">
+              <input type="radio" name="theme" value="warm">
+              <span class="theme-pill__dot" style="background: #C17B5F;"></span>
+              <span class="theme-pill__name">Warm</span>
+            </label>
+            <label class="theme-pill" data-theme="cool">
+              <input type="radio" name="theme" value="cool">
+              <span class="theme-pill__dot" style="background: #4A7C9B;"></span>
+              <span class="theme-pill__name">Cool</span>
+            </label>
+          </div>
         </div>
       </section>
 
       <!-- Basic Info Section -->
       <section class="form-section">
-        <h2 class="form-section__title">2. Basic Info</h2>
+        <h2 class="form-section__title">Basic Info</h2>
         <div class="form-grid">
           <div class="form-field">
             <label for="fullName">Full Name <span class="required">*</span></label>
@@ -254,7 +214,7 @@
           </button>
         </div>
         <p class="form-actions__theme-reminder">
-          Theme: <span id="selected-theme-name">Minimal Light</span>
+          Theme: <span id="selected-theme-name">Minimal</span>
           <a href="#portfolio-form" class="change-theme-link">Change</a>
         </p>
         <p class="form-actions__hint">Preview your portfolio first, then download when ready.</p>

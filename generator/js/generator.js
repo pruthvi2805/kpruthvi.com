@@ -119,10 +119,10 @@ const ThemePreviewManager = {
     if (!themeNameElement) return;
 
     const themeNames = {
-      'minimal-light': 'Minimal Light',
-      'forest': 'Forest Green',
-      'warm': 'Warm Terracotta',
-      'cool': 'Cool Blue'
+      'minimal-light': 'Minimal',
+      'forest': 'Forest',
+      'warm': 'Warm',
+      'cool': 'Cool'
     };
 
     themeNameElement.textContent = themeNames[themeId] || themeId;
