@@ -680,6 +680,29 @@ a:hover {
   margin-bottom: var(--space-16);
 }
 
+.form-actions__theme-reminder {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.form-actions__theme-reminder span {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.change-theme-link {
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  margin-left: var(--space-8);
+  font-size: var(--font-size-xs);
+}
+
+.change-theme-link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 .form-actions__hint {
   font-size: var(--font-size-sm);
   color: var(--color-text-tertiary);

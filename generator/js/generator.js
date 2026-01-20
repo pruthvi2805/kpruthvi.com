@@ -100,6 +100,7 @@ const ThemePreviewManager = {
     const selectedTheme = document.querySelector('input[name="theme"]:checked');
     if (selectedTheme) {
       this.applyThemePreview(selectedTheme.value);
+      this.updateThemeNameDisplay(selectedTheme.value);
     }
   },
 
@@ -108,8 +109,23 @@ const ThemePreviewManager = {
     themeCards.forEach(input => {
       input.addEventListener('change', (e) => {
         this.applyThemePreview(e.target.value);
+        this.updateThemeNameDisplay(e.target.value);
       });
     });
+  },
+
+  updateThemeNameDisplay(themeId) {
+    const themeNameElement = document.getElementById('selected-theme-name');
+    if (!themeNameElement) return;
+
+    const themeNames = {
+      'minimal-light': 'Minimal Light',
+      'forest': 'Forest Green',
+      'warm': 'Warm Terracotta',
+      'cool': 'Cool Blue'
+    };
+
+    themeNameElement.textContent = themeNames[themeId] || themeId;
   },
 
   applyThemePreview(themeId) {
