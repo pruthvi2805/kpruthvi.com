@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)",
+      "WebFetch(domain:www.zachjordan.io)",
+      "WebSearch",
+      "WebFetch(domain:support.claude.com)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)",
+      "Bash(git rm:*)",
+      "Bash(git push:*)",
+      "Bash(git restore:*)"
+    ]
+  }
+}
