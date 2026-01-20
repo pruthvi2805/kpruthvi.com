@@ -331,12 +331,28 @@ class ContactFormHandler {
   }
 
   showStatus(message, type) {
+    // Clear any existing timeout
+    if (this.statusTimeout) {
+      clearTimeout(this.statusTimeout);
+    }
+
     this.statusDiv.textContent = message;
     this.statusDiv.className = `form-status form-status-${type}`;
     this.statusDiv.style.display = 'block';
+
+    // Auto-dismiss success messages after 4 seconds
+    if (type === 'success') {
+      this.statusTimeout = setTimeout(() => {
+        this.statusDiv.classList.add('fade-out');
+        setTimeout(() => this.clearStatus(), 300);
+      }, 4000);
+    }
   }
 
   clearStatus() {
+    if (this.statusTimeout) {
+      clearTimeout(this.statusTimeout);
+    }
     this.statusDiv.style.display = 'none';
     this.statusDiv.textContent = '';
     this.statusDiv.className = 'form-status';
