@@ -1,79 +1,64 @@
-# kpruthvi.com
+# kpruthvi.com - Personal Hub
 
-Personal hub site with portfolio showcase and interactive tools.
-
-Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools.
+A terminal-themed landing page serving as the central hub for my web presence.
 
 ---
 
 ## Live Site
 
-👉 **https://kpruthvi.com**
+https://www.kpruthvi.com
+
+---
+
+## Related Sites
+
+Each site is its own repository and Cloudflare Pages deployment:
+
+- [Portfolio](https://portfolio.kpruthvi.com) - Professional portfolio
+- [Portfolio Builder](https://portfolio-builder.kpruthvi.com) - Portfolio generator tool
+- [Expense Tracker](https://expense.kpruthvi.com) - Privacy-first expense tracking
+
+---
+
+## Features
+
+- Terminal-themed design (JetBrains Mono, dark-first)
+- Project showcase with links to related sites
+- Scroll indicator for discoverability
+- Dark/light mode toggle
+- Contact form with Cloudflare Worker + Resend
+
+---
+
+## Tech Stack
+
+- Vanilla HTML, CSS, JavaScript
+- Cloudflare Pages (static hosting)
+- Cloudflare Workers (contact form backend)
+- Resend (email delivery)
+- Cloudflare Turnstile (spam protection)
 
 ---
 
 ## Structure
 
 ```
-kpruthvi.com/
-├── index.html              ← Hub (terminal-themed landing page)
-├── contact.html            ← Hub contact page
-├── portfolio/              ← Personal portfolio
-│   ├── index.html          ← Portfolio home
-│   ├── resume.html         ← Resume/CV
-│   ├── contact.html        ← Portfolio contact
-│   ├── css/
-│   └── js/
-├── generator/              ← Portfolio Generator tool
-│   ├── index.html
-│   ├── css/
-│   ├── js/
-│   └── libs/
-├── worker.js               ← Cloudflare Worker (contact form)
-└── docs/
-    ├── EDITING-GUIDE.md    ← How to update content
-    └── PROJECT-SPEC.md     ← Project specification
+my-portfolio/
+├── index.html          ← Hub landing page
+├── contact.html        ← Contact page
+├── css/
+├── js/
+├── worker.js           ← Cloudflare Worker (contact form)
+├── sitemap.xml
+├── robots.txt
+└── LICENSE
 ```
-
----
-
-## Features
-
-### Hub
-- Terminal-themed design (JetBrains Mono, dark-first)
-- Project showcase with links
-- Scroll indicator for discoverability
-- Dark/light mode toggle
-
-### Portfolio
-- Responsive design (desktop + mobile)
-- Contact form with Cloudflare Worker + Resend
-- Web resume with section navigation
-- SEO setup (sitemap, meta tags, robots.txt)
-
-### Portfolio Generator
-- Fill form with your details
-- Pick from 4 theme presets
-- Preview before downloading
-- Download ready-to-host ZIP file
-- Includes GitHub Pages hosting guide
-
----
-
-## Stack
-
-- HTML5, CSS3, vanilla JavaScript
-- Cloudflare Pages (static hosting)
-- Cloudflare Workers (contact form backend)
-- Resend (email delivery)
-- Cloudflare Turnstile (spam protection)
-- JSZip + FileSaver.js (generator ZIP creation)
 
 ---
 
 ## Local Development
 
-Open any HTML file directly in a browser, or run a local server:
+Open `index.html` directly in a browser, or run a local server:
 
 ```bash
 python -m http.server 8000
@@ -91,6 +76,4 @@ Push to `main` branch → Cloudflare Pages auto-deploys
 
 ## License
 
-MIT License — feel free to use as a starting point for your own site.
-
-Built by Pruthvi Kauticwar, 2026
+MIT License - see [LICENSE](LICENSE)
