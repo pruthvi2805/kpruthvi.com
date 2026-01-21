@@ -189,44 +189,6 @@
       width: 100%;
     }
 
-    /* Desktop Two-Column Layout */
-    .main-content {
-      display: block;
-    }
-
-    @media (min-width: 900px) {
-      main {
-        max-width: 1200px;
-        display: flex;
-        align-items: flex-start;
-        padding-top: 40px;
-      }
-
-      .main-content {
-        display: flex;
-        gap: 48px;
-        width: 100%;
-      }
-
-      .hero {
-        flex: 0 0 400px;
-        padding: 0;
-        position: sticky;
-        top: 40px;
-      }
-
-      .projects {
-        flex: 1;
-        padding: 0;
-        border-left: 1px solid var(--color-border);
-        padding-left: 48px;
-      }
-
-      .scroll-indicator {
-        display: none;
-      }
-    }
-
     /* Hero */
     .hero {
       padding: 50px 0 40px;
@@ -605,7 +567,6 @@
   </header>
 
   <main>
-    <div class="main-content">
     <section class="hero">
       <div class="hero__intro">
         <p class="hero__line hero__comment">// welcome to my corner of the internet</p>
@@ -621,16 +582,6 @@
       <p class="hero__bio">
         Engineer by day, tinkerer by night. I love creating things that are useful, simple, and pleasant to use. When I'm not at work, you'll find me exploring new ideas or refining old ones.
       </p>
-
-      <div class="status-line">
-        <div class="status-line__item">
-          <span class="status-line__dot"></span>
-          <span>online</span>
-        </div>
-        <a href="contact.html" class="status-line__link">contact</a>
-        <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="status-line__link">github</a>
-        <a href="https://linkedin.com/in/pruthvikauticwar" target="_blank" rel="noopener noreferrer" class="status-line__link">linkedin</a>
-      </div>
     </section>
 
     <section class="projects">
@@ -740,8 +691,17 @@
           </svg>
         </a>
       </div>
+
+      <div class="status-line">
+        <div class="status-line__item">
+          <span class="status-line__dot"></span>
+          <span>online</span>
+        </div>
+        <a href="contact.html" class="status-line__link">contact</a>
+        <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="status-line__link">github</a>
+        <a href="https://linkedin.com/in/pruthvikauticwar" target="_blank" rel="noopener noreferrer" class="status-line__link">linkedin</a>
+      </div>
     </section>
-    </div>
   </main>
 
   <!-- Scroll Indicator -->
