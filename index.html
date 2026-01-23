@@ -1297,54 +1297,39 @@
   <!-- AOS Library -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // All tools data
-    const allTools = [
-      {
-        name: 'Portfolio Builder',
-        desc: 'Build a clean developer portfolio in minutes. Fill in your details, pick a theme, and download a ready-to-host ZIP file. No signup required.',
-        shortDesc: 'Create portfolios in minutes',
-        url: 'https://portfolio-builder.kpruthvi.com',
-        icon: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>'
-      },
+    // All tools data - ordered by feature richness
+    const tools = [
       {
         name: 'Resume Builder',
         desc: 'Generate ATS-friendly resumes with real-time scoring and job description matching. Your data never leaves your browser.',
-        shortDesc: 'ATS-friendly resume generator',
         url: 'https://resume.kpruthvi.com',
         icon: '<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="14" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/>'
       },
       {
+        name: 'Portfolio Builder',
+        desc: 'Build a clean developer portfolio in minutes. Fill in your details, pick a theme, and download a ready-to-host ZIP file.',
+        url: 'https://portfolio-builder.kpruthvi.com',
+        icon: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>'
+      },
+      {
+        name: 'Expense Tracker',
+        desc: 'Track your expenses privately. All data stays in your browser. No accounts, no cloud sync, just simple expense tracking.',
+        url: 'https://expense.kpruthvi.com',
+        icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>'
+      },
+      {
         name: 'Converter',
-        desc: 'Convert between 100+ units instantly. Length, weight, temperature, currency, and more. Fast, accurate, and works offline.',
-        shortDesc: '100+ unit conversions',
+        desc: 'Convert between 100+ units instantly. Length, weight, temperature, currency, and more. Works offline.',
         url: 'https://convert.kpruthvi.com',
         icon: '<path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>'
       },
       {
         name: 'Textsy',
-        desc: 'Transform text instantly. Case conversion, encoding, formatting, and more. A Swiss Army knife for text manipulation.',
-        shortDesc: 'Text transformation tools',
+        desc: 'Transform text instantly. Case conversion, encoding, formatting, and more. A Swiss Army knife for text.',
         url: 'https://text.kpruthvi.com',
         icon: '<polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/>'
-      },
-      {
-        name: 'Expense Tracker',
-        desc: 'Track your expenses privately. All data stays in your browser. No accounts, no cloud sync, just simple expense tracking.',
-        shortDesc: 'Private expense tracking',
-        url: 'https://expense.kpruthvi.com',
-        icon: '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>'
       }
     ];
-
-    // Shuffle array using Fisher-Yates algorithm
-    function shuffleArray(array) {
-      const shuffled = [...array];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      return shuffled;
-    }
 
     // Render all build cards
     function renderBuilds(tools) {
@@ -1371,8 +1356,7 @@
     }
 
     // Initialize tools display
-    const shuffledTools = shuffleArray(allTools);
-    renderBuilds(shuffledTools);
+    renderBuilds(tools);
 
     // Initialize AOS
     AOS.init({
