@@ -30,8 +30,7 @@
   <!-- AOS - Animate on Scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
+  
   <style>
     :root {
       /* Warm light theme */
@@ -432,14 +431,12 @@
       resize: vertical;
     }
 
-    .cf-turnstile {
-      margin-bottom: 12px;
-      min-height: 65px;
-    }
-
-    .cf-turnstile iframe {
-      border-radius: 8px !important;
-      max-width: 100% !important;
+    /* Honeypot field - hidden from humans, visible to bots */
+    .form-field--honeypot {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .submit-btn {
@@ -720,7 +717,11 @@
             <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
           </div>
 
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAACNQMxBxxzSL2_0t" data-size="normal" data-appearance="interaction-only" data-theme="auto"></div>
+          <!-- Honeypot field - bots fill this, humans don't see it -->
+          <div class="form-field form-field--honeypot" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
 
           <button type="submit" class="submit-btn">
             <span>Send Message</span>
@@ -773,21 +774,6 @@
       const lastName = formData.get('lastName');
       const name = `${firstName} ${lastName}`;
 
-      // Get Turnstile token
-      let turnstileResponse = '';
-      try {
-        if (typeof turnstile !== 'undefined') {
-          turnstileResponse = turnstile.getResponse();
-        }
-      } catch (error) {
-        console.error('Turnstile error:', error);
-      }
-
-      if (!turnstileResponse) {
-        showStatus('Please complete the security check.', 'error');
-        return;
-      }
-
       // Disable button and show loading
       submitBtn.disabled = true;
       submitBtn.classList.add('loading');
@@ -803,7 +789,7 @@
             name: name,
             email: formData.get('email'),
             message: formData.get('message'),
-            'cf-turnstile-response': turnstileResponse,
+            website: formData.get('website'), // Honeypot field
           }),
         });
 
@@ -812,15 +798,12 @@
         if (response.ok) {
           showStatus('Message sent successfully! I\'ll get back to you soon.', 'success');
           form.reset();
-          setTimeout(() => turnstile.reset(), 100);
         } else {
           showStatus(data.error || 'Failed to send message. Please try again.', 'error');
-          turnstile.reset();
         }
       } catch (error) {
         console.error('Form submission error:', error);
         showStatus('Network error. Please check your connection and try again.', 'error');
-        turnstile.reset();
       } finally {
         submitBtn.disabled = false;
         submitBtn.classList.remove('loading');

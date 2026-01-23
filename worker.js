@@ -1,6 +1,6 @@
 /**
  * Cloudflare Worker for Contact Form
- * Handles form submissions with Turnstile verification and email sending via Resend
+ * Handles form submissions with honeypot spam protection and email sending via Resend
  */
 
 const TO_EMAIL = 'me@kpruthvi.com';
@@ -26,17 +26,17 @@ export default {
 
     try {
       const data = await request.json();
-      const { name, email, message, 'cf-turnstile-response': token } = data;
+      const { name, email, message, website } = data;
 
-      // Validate required fields
-      if (!name || !email || !message || !token) {
-        return jsonResponse({ error: 'All fields are required' }, 400);
+      // Honeypot check - if 'website' field is filled, it's a bot
+      if (website) {
+        // Pretend success to not alert the bot
+        return jsonResponse({ success: true, message: 'Message sent successfully!' });
       }
 
-      // Verify Turnstile token
-      const turnstileValid = await verifyTurnstile(token, request, env);
-      if (!turnstileValid) {
-        return jsonResponse({ error: 'Spam protection check failed. Please try again.' }, 400);
+      // Validate required fields
+      if (!name || !email || !message) {
+        return jsonResponse({ error: 'All fields are required' }, 400);
       }
 
       // Send email via Resend
@@ -52,29 +52,6 @@ export default {
     }
   },
 };
-
-async function verifyTurnstile(token, request, env) {
-  const ip = request.headers.get('CF-Connecting-IP');
-  
-  const formData = new URLSearchParams();
-  formData.append('secret', env.TURNSTILE_SECRET);
-  formData.append('response', token);
-  formData.append('remoteip', ip);
-
-  try {
-    const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: formData,
-    });
-
-    const data = await result.json();
-    return data.success;
-  } catch (error) {
-    console.error('Turnstile verification error:', error);
-    return false;
-  }
-}
 
 async function sendEmail(name, email, message, env) {
   try {
