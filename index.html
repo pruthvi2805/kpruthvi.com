@@ -1081,6 +1081,53 @@
     html {
       scroll-padding-top: 60px;
     }
+
+    /* Mobile scroll indicator */
+    .scroll-indicator {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .scroll-indicator {
+        display: flex;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        z-index: 50;
+        opacity: 0.6;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .scroll-indicator.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .scroll-indicator__text {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+      }
+
+      .scroll-indicator__icon {
+        width: 20px;
+        height: 20px;
+        color: var(--color-accent);
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(4px); }
+      }
+    }
   </style>
 </head>
 <body>
@@ -1092,6 +1139,14 @@
     <a href="#principles" class="dot-nav__dot" data-section="principles" data-index="2" aria-label="Philosophy section"></a>
     <a href="#contact" class="dot-nav__dot" data-section="contact" data-index="3" aria-label="Contact section"></a>
   </nav>
+
+  <!-- Mobile scroll indicator -->
+  <div class="scroll-indicator" id="scroll-indicator">
+    <span class="scroll-indicator__text">Scroll</span>
+    <svg class="scroll-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+    </svg>
+  </div>
 
   <header class="header" id="header">
     <a href="/" class="logo">
@@ -1410,6 +1465,17 @@
 
     // Initialize trail position
     setTimeout(() => updateTrail(0), 100);
+
+    // Mobile scroll indicator - hide on first scroll, never return
+    const scrollIndicator = document.getElementById('scroll-indicator');
+    let scrollIndicatorHidden = false;
+
+    window.addEventListener('scroll', () => {
+      if (!scrollIndicatorHidden && window.scrollY > 10) {
+        scrollIndicator.classList.add('hidden');
+        scrollIndicatorHidden = true;
+      }
+    }, { passive: true });
 
     // Mobile menu
     const menuToggle = document.getElementById('menu-toggle');
