@@ -843,7 +843,8 @@
 
       .hero {
         min-height: auto;
-        padding: 100px 24px 48px;
+        padding: 80px 24px 40px;
+        align-items: flex-start;
       }
 
       .hero__illustration {
@@ -852,11 +853,6 @@
 
       .hero__bio {
         margin-bottom: 28px;
-      }
-
-      /* Ensure alternating backgrounds on mobile */
-      .section--alt {
-        background: var(--color-bg-alt);
       }
 
       /* Visibility helpers */
@@ -871,11 +867,22 @@
       .section {
         min-height: auto;
         padding: 48px 24px;
+        justify-content: flex-start;
       }
 
       /* Prevent horizontal scroll */
       html, body {
         overflow-x: hidden;
+        max-width: 100vw;
+      }
+
+      /* More visible alternating backgrounds on mobile dark mode */
+      .section--alt {
+        background: var(--color-bg-alt);
+      }
+
+      [data-theme="dark"] .section--alt {
+        background: #2a231b;
       }
 
       .section__header {
@@ -944,13 +951,21 @@
       .principles__grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden;
         scroll-snap-type: x mandatory;
         gap: 16px;
         padding-bottom: 16px;
         -webkit-overflow-scrolling: touch;
-        margin: 0 -24px;
+        margin-left: -24px;
+        margin-right: -24px;
         padding-left: 24px;
         padding-right: 24px;
+        width: calc(100% + 48px);
+      }
+
+      .section__inner {
+        width: 100%;
+        overflow: hidden;
       }
 
       .principle-card {
