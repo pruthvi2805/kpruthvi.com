@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://www.kpruthvi.com/">
   <script>
-    (function() {
+    (function () {
       var theme = localStorage.getItem('hub-theme');
       if (theme) {
         document.documentElement.setAttribute('data-theme', theme);
@@ -14,7 +15,8 @@
       }
     })();
   </script>
-  <meta name="description" content="Pruthvi Kauticwar - Pega Architect & Web Tools Builder. Enterprise systems and privacy-first browser tools.">
+  <meta name="description"
+    content="Pruthvi Kauticwar - Pega Architect & Web Tools Builder. Enterprise systems and privacy-first browser tools.">
   <meta name="author" content="Pruthvi Kauticwar">
   <meta name="robots" content="index, follow">
 
@@ -22,17 +24,21 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.kpruthvi.com/">
   <meta property="og:title" content="Pruthvi Kauticwar - Pega Architect">
-  <meta property="og:description" content="Pega Architect building useful tools. Explore my projects: Resume Builder, Portfolio Builder, Textsy, and more.">
+  <meta property="og:description"
+    content="Pega Architect building useful tools. Explore my projects: Resume Builder, Portfolio Builder, Textsy, and more.">
 
   <title>Pruthvi Kauticwar - Pega Architect</title>
 
   <meta name="theme-color" content="#faf8f5">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9C%A6</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9C%A6</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <!-- AOS - Animate on Scroll -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -215,10 +221,21 @@
       height: 20px;
     }
 
-    .theme-toggle .icon-moon { display: block; }
-    .theme-toggle .icon-sun { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+    .theme-toggle .icon-moon {
+      display: block;
+    }
+
+    .theme-toggle .icon-sun {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle .icon-moon {
+      display: none;
+    }
+
+    [data-theme="dark"] .theme-toggle .icon-sun {
+      display: block;
+    }
 
     /* Mobile Menu */
     .menu-toggle {
@@ -283,9 +300,17 @@
       transform: translateY(0);
     }
 
-    .mobile-nav.open .mobile-nav__link:nth-child(2) { transition-delay: 0.1s; }
-    .mobile-nav.open .mobile-nav__link:nth-child(3) { transition-delay: 0.15s; }
-    .mobile-nav.open .mobile-nav__link:nth-child(4) { transition-delay: 0.2s; }
+    .mobile-nav.open .mobile-nav__link:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    .mobile-nav.open .mobile-nav__link:nth-child(3) {
+      transition-delay: 0.15s;
+    }
+
+    .mobile-nav.open .mobile-nav__link:nth-child(4) {
+      transition-delay: 0.2s;
+    }
 
     .mobile-nav__link:hover {
       color: var(--color-accent);
@@ -811,7 +836,8 @@
       }
 
       /* Prevent horizontal scroll */
-      html, body {
+      html,
+      body {
         overflow-x: hidden;
         max-width: 100vw;
       }
@@ -1115,19 +1141,28 @@
       }
 
       @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(4px); }
+
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(4px);
+        }
       }
     }
   </style>
 </head>
+
 <body>
   <!-- Dot Navigation -->
   <nav class="dot-nav" id="dot-nav" aria-label="Section navigation">
     <div class="dot-nav__trail" id="dot-trail"></div>
     <a href="#" class="dot-nav__dot active" data-section="hero" data-index="0" aria-label="Hero section"></a>
     <a href="#builds" class="dot-nav__dot" data-section="builds" data-index="1" aria-label="Builds section"></a>
-    <a href="#principles" class="dot-nav__dot" data-section="principles" data-index="2" aria-label="Philosophy section"></a>
+    <a href="#principles" class="dot-nav__dot" data-section="principles" data-index="2"
+      aria-label="Philosophy section"></a>
     <a href="#contact" class="dot-nav__dot" data-section="contact" data-index="3" aria-label="Contact section"></a>
   </nav>
 
@@ -1135,7 +1170,7 @@
   <div class="scroll-indicator" id="scroll-indicator">
     <span class="scroll-indicator__text">Scroll</span>
     <svg class="scroll-indicator__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+      <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
     </svg>
   </div>
 
@@ -1149,18 +1184,19 @@
       <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
       <button class="theme-toggle" aria-label="Toggle theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="5"/>
-          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          <circle cx="12" cy="12" r="5" />
+          <path
+            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
         </svg>
       </button>
       <button class="menu-toggle" aria-label="Open menu" id="menu-toggle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
         </svg>
       </button>
     </nav>
@@ -1170,13 +1206,14 @@
   <nav class="mobile-nav" id="mobile-nav">
     <button class="mobile-nav__close" aria-label="Close menu" id="mobile-nav-close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
       </svg>
     </button>
     <a href="#builds" class="mobile-nav__link">Builds</a>
     <a href="contact.html" class="mobile-nav__link">Contact</a>
-    <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="mobile-nav__link">GitHub</a>
+    <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer"
+      class="mobile-nav__link">GitHub</a>
   </nav>
 
   <main>
@@ -1194,13 +1231,14 @@
           <span>Web Tools Builder</span>
         </p>
         <p class="hero__bio" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-          Architecting KYC compliance platforms for European banks by day. Building privacy-first browser tools by night.
+          Architecting KYC compliance platforms for European banks by day. Building privacy-first browser tools by
+          night.
         </p>
         <div class="hero__ctas" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
           <a href="https://portfolio.kpruthvi.com" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
             View My Work
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
+              <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
           <a href="#builds" class="btn btn--secondary">Explore Tools</a>
@@ -1208,7 +1246,8 @@
       </div>
       <!-- Hero Illustration -->
       <div class="hero__illustration" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-        <object type="image/svg+xml" data="hero-illustration.svg" aria-label="Illustration of a person working with multiple devices"></object>
+        <object type="image/svg+xml" data="hero-illustration.svg"
+          aria-label="Illustration of a person working with multiple devices"></object>
       </div>
     </section>
 
@@ -1236,17 +1275,20 @@
           <div class="principle-card" data-aos="fade-up" data-aos-delay="100">
             <p class="principle-card__number">01</p>
             <h3 class="principle-card__title">Simple Over Clever</h3>
-            <p class="principle-card__desc">Complexity is easy. Simplicity requires discipline. I build tools that just work.</p>
+            <p class="principle-card__desc">Complexity is easy. Simplicity requires discipline. I build tools that just
+              work.</p>
           </div>
           <div class="principle-card" data-aos="fade-up" data-aos-delay="200">
             <p class="principle-card__number">02</p>
             <h3 class="principle-card__title">Privacy by Default</h3>
-            <p class="principle-card__desc">Your data stays on your device. No tracking, no accounts, no servers storing your info.</p>
+            <p class="principle-card__desc">Your data stays on your device. No tracking, no accounts, no servers storing
+              your info.</p>
           </div>
           <div class="principle-card" data-aos="fade-up" data-aos-delay="300">
             <p class="principle-card__number">03</p>
             <h3 class="principle-card__title">Instant & Offline</h3>
-            <p class="principle-card__desc">No loading spinners, no server waits. Tools that work instantly, even without internet.</p>
+            <p class="principle-card__desc">No loading spinners, no server waits. Tools that work instantly, even
+              without internet.</p>
           </div>
         </div>
       </div>
@@ -1261,20 +1303,24 @@
             <p>Got an idea, feedback, or just want to chat? Drop me a line.</p>
           </div>
           <div class="contact__links" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-            <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="contact__link" aria-label="GitHub">
+            <a href="https://github.com/pruthvi2805" target="_blank" rel="noopener noreferrer" class="contact__link"
+              aria-label="GitHub">
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
               </svg>
             </a>
-            <a href="https://linkedin.com/in/pruthvikauticwar" target="_blank" rel="noopener noreferrer" class="contact__link" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/pruthvikauticwar" target="_blank" rel="noopener noreferrer"
+              class="contact__link" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
             </a>
             <a href="mailto:me@kpruthvi.com" class="contact__link" aria-label="Email">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
               </svg>
             </a>
             <a href="contact.html" class="btn btn--primary">Send Message</a>
@@ -1290,7 +1336,8 @@
       <span class="footer__separator">·</span>
       <span>&copy; 2026 Pruthvi Kauticwar</span>
       <span class="footer__separator">·</span>
-      <span class="footer__attribution"><a href="https://storyset.com/technology" target="_blank" rel="noopener noreferrer">Illustrations by Storyset</a></span>
+      <span class="footer__attribution"><a href="https://storyset.com/technology" target="_blank"
+          rel="noopener noreferrer">Illustrations by Storyset</a></span>
     </div>
   </footer>
 
@@ -1299,6 +1346,12 @@
   <script>
     // All tools data - ordered by feature richness
     const tools = [
+      {
+        name: 'Ledger MCP',
+        desc: 'A privacy-first financial AI assistant powered by the Model Context Protocol (MCP). Features a universal PDF/CSV parser and offline LLM integration.',
+        url: 'https://ledger-mcp.kpruthvi.com',
+        icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>'
+      },
       {
         name: 'Quick Resume',
         desc: 'Generate ATS-friendly resumes with real-time scoring and job description matching. Your data never leaves your browser.',
@@ -1427,7 +1480,7 @@
           dots.forEach(dot => {
             dot.classList.remove('active');
             if (dot.dataset.section === sectionId ||
-                (sectionId === '' && dot.dataset.section === 'hero')) {
+              (sectionId === '' && dot.dataset.section === 'hero')) {
               dot.classList.add('active');
               updateTrail(parseInt(dot.dataset.index));
             }
@@ -1476,4 +1529,5 @@
     });
   </script>
 </body>
+
 </html>
