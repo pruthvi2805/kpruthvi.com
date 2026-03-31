@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://kpruthvi.com/sitemap.xml
+Sitemap: https://www.kpruthvi.com/sitemap.xml
 
 # Disallow print version from search results
 Disallow: /resume-print.html

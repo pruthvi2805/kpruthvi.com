@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://www.kpruthvi.com/contact">
+  <link rel="canonical" href="https://www.kpruthvi.com/contact.html">
   <script>
     (function() {
       var theme = localStorage.getItem('hub-theme');
@@ -780,7 +780,7 @@
       clearStatus();
 
       try {
-        const response = await fetch('https://contact-worker.kautikwarpruthvi.workers.dev', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

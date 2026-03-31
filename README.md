@@ -9,7 +9,7 @@
 ---
 
 <img src="https://img.shields.io/badge/Vanilla-HTML%20%7C%20CSS%20%7C%20JS-f4e9c8?style=for-the-badge" alt="Vanilla Stack" />
-<img src="https://img.shields.io/badge/Cloudflare-Pages%20%2B%20Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare" />
+<img src="https://img.shields.io/badge/Cloudflare-Pages%20%2B%20Functions-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare" />
 <img src="https://img.shields.io/badge/Privacy-First-c9a227?style=for-the-badge" alt="Privacy First" />
 
 </div>
@@ -85,8 +85,8 @@ A meticulously crafted personal hub that serves as the central gateway to my web
 
 ### Technical
 - Zero dependencies (except AOS)
-- Cloudflare Workers contact form
-- Turnstile captcha integration
+- Cloudflare Pages Function contact form
+- Honeypot spam protection
 - Fisher-Yates tool rotation
 - IntersectionObserver for scroll tracking
 
@@ -113,9 +113,9 @@ Frontend        Vanilla HTML, CSS, JavaScript
 Typography      Playfair Display, Inter (Google Fonts)
 Animations      AOS (Animate on Scroll)
 Hosting         Cloudflare Pages
-Backend         Cloudflare Workers
+Backend         Cloudflare Pages Functions
 Email           Resend API
-Captcha         Cloudflare Turnstile
+Spam Control    Honeypot field
 ```
 
 ---
@@ -127,7 +127,9 @@ kpruthvi.com/
 ├── index.html            # Main hub page
 ├── contact.html          # Contact form page
 ├── hero-illustration.svg # Animated hero artwork
-├── worker.js             # Cloudflare Worker (contact form handler)
+├── functions/
+│   └── api/
+│       └── contact.js    # Cloudflare Pages Function (contact form handler)
 ├── sitemap.xml           # SEO sitemap
 ├── robots.txt            # Crawler directives
 └── LICENSE               # MIT License
@@ -165,13 +167,15 @@ npx serve .
 
 Then open [http://localhost:8000](http://localhost:8000)
 
+For contact form testing, deploy through Cloudflare Pages so the `/api/contact` Pages Function is available. Add `RESEND_API_KEY` as a Cloudflare Pages production/preview secret before testing submissions.
+
 ---
 
 ## Deployment
 
 Push to `main` → Cloudflare Pages auto-deploys
 
-The Worker (`worker.js`) handles contact form submissions via Cloudflare Workers, routing emails through Resend.
+The Pages Function at `/api/contact` handles contact form submissions, validates same-site requests, applies honeypot spam filtering, and routes email through Resend.
 
 ---
 
